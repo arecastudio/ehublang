@@ -28,16 +28,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	console.log('Ready....');
-	$.ajax({
-		type:'POST',
-		url:'ctrl/info-pelanggan.php',
-		data:{'get_upp':'1'},
-		success:function(e){
-			$('#opt-cabang').html(e);
-		},
-		error:function(req,stat,err){
-			$('#result').html(req.responseText+'\n\nfailed to request view from server.');
-		}
-	});
+	$('#opt-cabang').load('ctrl/main.php?gif=upp');
 });
 </script>

@@ -7,72 +7,43 @@
     <meta name="author" content="">
     <link rel="icon" href="static/favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="static/js/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="static/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="static/js/popper.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/main.js"></script>
-    <!-- Bootstrap core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <title>E-Hublang - PDAM Jayapura</title>
+    <script type="text/javascript" src="static/jquery.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet">
   </head>
+<body>
+    	<div id="head">
+		<ul id="navbar">
+			<li><a href="#">Berkas</a></li>
+			<li><a href="#">Proses</a></li>
+			<li><a href="#">Laporan</a></li>
+			<li><a href="#">Pengaturan</a></li>
+		</ul>
+	</div>
 
-  <body>
+	<div id="sidebar">
+<ul>
+<li>1</li>
+<li>1</li>
+<li>1</li>
+<li>1</li>
+<li>1</li>
+</ul>	
+	</div>
 
-    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="navbar">
-      <a class="navbar-brand" href="?">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="?">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Berkas</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a id="info-pel" class="dropdown-item" href="?p=info-pelanggan">Informasi Pelanggan</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-
-    <main id="main" role="main" class="container">
-
-      <!--div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div-->
-
-
-<?php
-
+    	<div id="content">
+		<?php
+		
 if(isset($_GET['p']) && $_GET['p']!=''){
 	switch($_GET['p']){
+		case 'reg-pelanggan':
+			require_once('view/reg-pelanggan.html');
+			break;
 		case 'info-pelanggan':
 			require_once('view/info-pelanggan.html');
+			//echo "halaman info pelanggan";
 			break;
 		case 'cetak-pelanggan':
 			require_once('view/cetak-pelanggan.html');
@@ -81,13 +52,19 @@ if(isset($_GET['p']) && $_GET['p']!=''){
 			echo"Welcome.";
 	}
 }
+		?>
+	</div><!--content-->
+    	<div id="footer"></div>
+</body>
 
-?>
 
 
-    </main><!-- /.container -->
 
 
-  </body>
+
+
+
+
+<script>
+</script>
 </html>
-
