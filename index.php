@@ -8,7 +8,7 @@
     <link rel="icon" href="static/favicon.ico">
 
     <title>E-Hublang - PDAM Jayapura</title>
-    <script type="text/javascript" src="static/jquery.min.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="static/style.css" rel="stylesheet">
@@ -16,10 +16,13 @@
 <body>
     	<div id="head">
 		<ul id="navbar">
+			<li><a href="?">Home</a></li>
 			<li><a href="#">Berkas</a></li>
 			<li><a href="#">Proses</a></li>
 			<li><a href="#">Laporan</a></li>
 			<li><a href="#">Pengaturan</a></li>
+			<li><a href="#">Manual</a></li>
+			<li style="float:right;"><a href="#">Logout</a></li>
 		</ul>
 	</div>
 
@@ -62,9 +65,11 @@ if(isset($_GET['p']) && $_GET['p']!=''){
 
 
 
-
-
-
 <script>
+$(document).ready(function(){
+
+});
 </script>
+
+
 </html>

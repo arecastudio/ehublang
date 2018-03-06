@@ -1,10 +1,20 @@
 <style type="text/css">
 label{
 	display:inline-block;
-	width:80px;
+	width:130px;
 	text-align:left;
 	margin-bottom:10px;
 }
+
+#kotak{
+	padding:5px;
+	width:500px;
+	background-color:#eef;
+	border-radius:5px;
+	margin-bottom:5px;
+	overflow:auto;
+}
+
 </style>
 
 <strong>
@@ -12,47 +22,89 @@ Registrasi Pelanggan Baru
 </strong>
 
 
-<div style="background-color:#fff;padding:5px;width:500px;">
+<div id="kotak">
+	<form id="form">
+<div>
+<label for="tx-id">Nomor Identitas</label>
+<input tyle="text" id="tx-id" name="tx-id"/>
+</div>
+
+
 <div>
 <label for="tx-nama">Nama</label>
-<input tyle="text" id="tx-nama"/>
+<input tyle="text" id="tx-nama" name="tx-nama"/>
+</div>
+
+
+<div>
+<label for="tx-alamat">Alamat</label>
+<input tyle="text" id="tx-alamat"/>
 </div>
 
 <div>
-<label for="tx-nama">Alamat</label>
-<input tyle="text" id="tx-nama"/>
+<label for="tx-rt">RT/RW</label>
+<input tyle="text" id="tx-rt" name="tx-rt" style="width:50px;"/>&nbsp;/&nbsp;
+<input tyle="text" id="tx-rw" name="tx-rw" style="width:50px;"/>
 </div>
 
 <div>
-<label for="tx-nama">RT/RW</label>
-<input tyle="text" id="tx-rt" style="width:50px;"/>&nbsp;/&nbsp;
-<input tyle="text" id="tx-rw" style="width:50px;"/>
+<label for="tx-hp">No. HP</label>
+<input tyle="text" id="tx-hp" name="tx-hp"/>
 </div>
 
 <div>
-<label for="tx-nama">No. HP</label>
-<input tyle="text" id="tx-nama"/>
+<label for="tx-spl">No. SPL</label>
+<input tyle="text" id="tx-spl" name="tx-spl"/>
 </div>
 
 <div>
-<label for="tx-nama">No. SPL</label>
-<input tyle="text" id="tx-nama"/>
+	<label for="opt-upp">Area Service</label>
+	<select id="opt-upp" name="opt-upp">
+		<!-- auto-create-content -->
+	</select>
 </div>
-
-
-</div>
-
+</form>
+<hr/>
 <div>
-<button style="float:right;">Simpan</button>
+<button id="btn-submit" class="btn" style="float:right;">Simpan</button>
+<button id="btn-reset" class="btn" style="">Reset</button>
 </div>
 
+</div>
+
+
+<div id="msg" class="msg"></div>
+
+<div id="tabel" style="min-width:800px;"></div>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
 
+	$('#opt-upp').load('ctrl/main.php?gif=upp');
+	$('#tabel').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 
+	$('#btn-reset').click(function(){
+		$('#form')[0].reset();
+		$('#msg').css('display','none');
+	});
 
+	$('#btn-submit').click(function(){
+/*		$('#msg').css('display','block');*/
+		var data=$('#form').serialize();
+		$.ajax({
+			type:'POST',
+			url:'ctrl/reg-pelanggan.php',
+			data:data,
+			success:function(e){
+				/*$('#msg').html(e);*/
+				$('#tabel').load('ctrl/reg-pelanggan.php?gif=pelanggan-baru');
+			},
+			error:function(){
+				$('#msg').html('Gagal menyimpan data.');
+			}
+		});
+	});
 
 });
 

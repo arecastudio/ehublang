@@ -12,9 +12,9 @@ if(isset($_GET['gif'])){
 			break;
 		default:
 			//
+			echo"Test test test test....";
 	}
 }
-
 
 
 
