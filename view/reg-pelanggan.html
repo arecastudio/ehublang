@@ -1,10 +1,4 @@
 <style type="text/css">
-label{
-	display:inline-block;
-	width:130px;
-	text-align:left;
-	margin-bottom:10px;
-}
 
 #kotak{
 	padding:5px;
@@ -23,10 +17,10 @@ Registrasi Pelanggan Baru
 
 
 <div id="kotak">
-	<form id="form">
+	<form id="form" class="">
 <div>
 <label for="tx-id">Nomor Identitas</label>
-<input type="text" id="tx-id" name="tx-id"/>
+<input type="text" id="tx-id" name="tx-id" placeholder="KTP / SIM / NPWP"/>
 </div>
 
 
@@ -66,8 +60,8 @@ Registrasi Pelanggan Baru
 </form>
 <hr/>
 <div>
-<button id="btn-submit" class="btn" style="float:right;">Simpan</button>
-<button id="btn-reset" class="btn" style="">Reset</button>
+<button id="btn-submit" class="ui-button" style="float:right;">Simpan</button>
+<button id="btn-reset" class="ui-button" style="">Reset</button>
 </div>
 
 </div>
@@ -92,11 +86,18 @@ Registrasi Pelanggan Baru
 
 <tbody id="tbody">
 </tbody>
+<tfoot>
+	<tr>
+		<td colspan="10" style="font-style:italic;font-size:80%;">Tabel ini hanya menampilkan draft calon pelanggan untuk bulan berjalan.</td>
+	</tr>
+</tfoot>
 </table>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
+
+/*	$('#opt-upp').selectmenu();*/
 
 	$('#opt-upp').load('ctrl/main.php?gif=upp');
 	$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
@@ -126,16 +127,36 @@ $(document).ready(function(){
 				/*$('#msg').html(e);*/
 				$('#form')[0].reset();
 				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
+				$('#tx-id').focus();
 			},
-			error:function(){
+			error:function(req,stat,err){
 				$('#msg').css('display','block');
-				$('#msg').html('Gagal menyimpan data.');
+				$('#msg').html('Error msg: '+req.responseText);
 			}
 		});
 		}else{
 			$('#msg').css('display','block');
 			$('#msg').html('Lengkapi form terlebih dahulu !');
 		}
+	});
+
+	$('#tbody').delegate('.btn-del','click',function(){
+		var id=$(this).attr('id');
+		console.log('id_hapus: '+id);
+		$.ajax({
+			type:'POST',
+			url:'ctrl/reg-pelanggan.php',
+			data:{'id_hapus':id},
+			success:function(e){				
+				$('#msg').css('display','block');
+				$('#msg').html(e);
+				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
+				$('#tx-id').focus();
+			},
+			error:function(){
+				$('#msg').html('Gagal menghapus data.');
+			}
+		});
 	});
 
 });

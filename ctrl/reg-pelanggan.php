@@ -22,7 +22,7 @@ if( isset($_GET['gif']) && $_GET['gif']=='pel-baru'  ){
 			<td style=\"text-align:center\">$row[8]</td>
 			<td style=\"text-align:center\">$row[9]</td>
 			<td style=\"text-align:center;\">
-				<button id=\"$row[0]\" class=\"btn-del\">x</button>
+				<button id=\"$row[0]\" class=\"btn-del ui-button\" title=\"Hapus calon pelanggan ini.\">x</button>
 			</td>
 		</tr>
 		";
@@ -32,7 +32,7 @@ if( isset($_GET['gif']) && $_GET['gif']=='pel-baru'  ){
 
 
 if(isset($_POST['tx-id'])){
-	$id=$_POST['tx-id'];
+	$sid=$_POST['tx-id'];
 	$nama=$_POST['tx-nama'];
 	$alamat=$_POST['tx-alamat'];
 	$rt=$_POST['tx-rt'];
@@ -54,7 +54,7 @@ if(isset($_POST['tx-id'])){
 		no_spl,
 		cabang
 	)VALUES(
-		'$id',
+		'$sid',
 		'$nama',
 		'$alamat',
 		'$rt',
@@ -65,12 +65,22 @@ if(isset($_POST['tx-id'])){
 	);";
 
 	$rs=$con->query($sql);
-	if(!$rs){
-		echo "Gagal menambahkan calon pelanggan.";
+	if($rs){
+		echo "Berhasil menambahkan calon pelanggan baru.";
 	}else{
-		echo "Berhasil menambahkan calong pelanggan baru..";
+		echo "Gagal menambahkan calon pelanggan.";
 	}
 }
 
+
+if(isset($_POST['id_hapus']) && $_POST['id_hapus']!=''){
+	$sql="DELETE FROM pelanggan_reg WHERE id=".$_POST['id_hapus'].";";
+	$rs=$con->query($sql);
+	if(!$rs){
+		echo "Gagal menghapus data.";
+	}else{
+		echo "Berhasil menghapus data.";
+	}
+}
 
 $con->close();

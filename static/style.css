@@ -44,12 +44,16 @@ hr{
 
 #sidebar{
 	float:left;
-	width:200px;
+	width:150px;
 	height:600px;;
 	padding:1px;
 	border:solid 1px #ccc;
 }
 
+.sub-side-menu{
+	text-decoration:none!important;
+	color:#555;
+}
 
 #content{
 	float:left;
@@ -64,6 +68,7 @@ hr{
 	float:clear;
 	padding:10px;
 	border-radius:5px;
+	border:1px solid red;
 	display:none;
 	margin-top:5px;
 	margin-bottom:5px;
@@ -87,13 +92,40 @@ hr{
 	padding:2px;
 }
 
-
+/*
 .side-menu{
 	display:block;
 	text-decoration:none;
 	color:#777;
 }
-.side-menu li a:hover{
+.side-menux li a:hover{
 	background-color:#777;
 	color:#fff;
+}
+*/
+input[type=text]{
+	color:#555;
+	padding:0px;
+}
+
+label{
+	display:inline-block;
+	min-width:130px;
+	text-align:left;
+	margin-bottom:10px;
+}
+
+.icon-md{
+	width:50px;
+}
+
+.menu-md{
+	border:1px solid #ccc;
+	border-radius:5px;
+	padding:20px;
+	text-align:center;
+}
+
+.menu-md:hover{
+	background-color:#eee;
 }

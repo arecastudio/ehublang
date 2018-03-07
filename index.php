@@ -8,10 +8,16 @@
     <link rel="icon" href="static/favicon.ico">
 
     <title>E-Hublang - PDAM Jayapura</title>
+
     <script type="text/javascript" src="static/jquery.js"></script>
+    
+    <!-- jquery-ui -->
+    <script type="text/javascript" src="static/jquery-ui.js"></script>
+    <link href="static/jquery-ui.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="static/style.css" rel="stylesheet">
+
   </head>
 <body>
     	<div id="head">
@@ -27,13 +33,14 @@
 	</div>
 
 	<div id="sidebar">
-<ul class="side-menu">
-<li><a href="?p=reg-pelanggan">Registrasi Pelanggan</a></li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-</ul>	
+		<a href="?p=reg-pelanggan" title="Registrasi pelanggan baru" class="sub-side-menu">
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/registrasi.png"/>
+			<br/>
+			<small>Registrasi</small>
+		</div>
+		</a>
 	</div>
 
     	<div id="content">
