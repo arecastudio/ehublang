@@ -2,49 +2,31 @@
 require_once('default.php');
 
 if( isset($_GET['gif']) && $_GET['gif']=='pel-baru'  ){
-	$sql="SELECT DISTINCT no_ktp,nama,alamat,rt,rw,no_hp,no_spl,cabang,tgl_input FROM pelanggan_daftar WHERE YEAR(tgl_input)=YEAR(now()) AND MONTH(tgl_input)=MONTH(now());";
-	$tabel="
-
-	<table>
-	<thead>
-	<tr>
-	<th>#</th>
-	<th>ID</th>
-	<th>Nama</th>
-	<th>Alamat</th>
-	<th>RT</th>
-	<th>RW</th>
-	<th>No. HP</th>
-	<th>No. SPL</th>
-	<th>Cabang</th>
-	<th>Tgl</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	";
+	$sql="SELECT DISTINCT ID,no_ktp,nama,alamat,rt,rw,no_hp,no_spl,cabang,tgl_input FROM pelanggan_reg WHERE YEAR(tgl_input)=YEAR(now()) AND MONTH(tgl_input)=MONTH(now()) ORDER BY tgl_input DESC;";
+	$tabel="";
+	$i=0;
 	$rs=$con->query($sql);
 	while($row=$rs->fetch_row()){
+		$i++;
 		$tabel.="
 		<tr>
-			<td>#</td>
-			<td>$row[0]</td>
-			<td>$row[1]</td>
-			<td>$row[2]</td>
-			<td>$row[3]</td>
-			<td>$row[4]</td>
-			<td>$row[5]</td>
-			<td>$row[6]</td>
-			<td>$row[7]</td>
-			<td>$row[8]</td>
+			<td style=\"text-align:center\">$i</td>
+			<td style=\"text-align:center\"><small>$row[1]</small></td>
+			<td>$row[2]<hr/>
+			<small>$row[3]</small>
+			</td>
+			<td style=\"text-align:center\">$row[4]</td>
+			<td style=\"text-align:center\">$row[5]</td>
+			<td style=\"text-align:center\">$row[6]</td>
+			<td style=\"text-align:center\"><small>$row[7]</small></td>
+			<td style=\"text-align:center\">$row[8]</td>
+			<td style=\"text-align:center\">$row[9]</td>
+			<td style=\"text-align:center;\">
+				<button id=\"$row[0]\" class=\"btn-del\">x</button>
+			</td>
 		</tr>
 		";
 	}
-	$tabel.="
-	</tbody>
-
-	</table>
-	";
 	echo $tabel;
 }
 
@@ -62,7 +44,7 @@ if(isset($_POST['tx-id'])){
 	//	echo"menympan data pelanggan baru.....".$nama;
 
 	$sql="
-	INSERT INTO pelanggan_daftar(
+	INSERT INTO pelanggan_reg(
 		no_ktp,
 		nama,
 		alamat,
@@ -77,8 +59,8 @@ if(isset($_POST['tx-id'])){
 		'$alamat',
 		'$rt',
 		'$rw',
-		'$no_hp',
-		'$no_spl',
+		'$hp',
+		'$spl',
 		'$upp'
 	);";
 

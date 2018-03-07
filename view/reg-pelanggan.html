@@ -9,7 +9,7 @@ label{
 #kotak{
 	padding:5px;
 	width:500px;
-	background-color:#eef;
+	background-color:#fff;
 	border-radius:5px;
 	margin-bottom:5px;
 	overflow:auto;
@@ -26,35 +26,35 @@ Registrasi Pelanggan Baru
 	<form id="form">
 <div>
 <label for="tx-id">Nomor Identitas</label>
-<input tyle="text" id="tx-id" name="tx-id"/>
+<input type="text" id="tx-id" name="tx-id"/>
 </div>
 
 
 <div>
 <label for="tx-nama">Nama</label>
-<input tyle="text" id="tx-nama" name="tx-nama"/>
+<input type="text" id="tx-nama" name="tx-nama"/>
 </div>
 
 
 <div>
 <label for="tx-alamat">Alamat</label>
-<input tyle="text" id="tx-alamat"/>
+<input type="text" id="tx-alamat" name="tx-alamat"/>
 </div>
 
 <div>
 <label for="tx-rt">RT/RW</label>
-<input tyle="text" id="tx-rt" name="tx-rt" style="width:50px;"/>&nbsp;/&nbsp;
-<input tyle="text" id="tx-rw" name="tx-rw" style="width:50px;"/>
+<input type="text" id="tx-rt" name="tx-rt" style="width:50px;"/>&nbsp;/&nbsp;
+<input type="text" id="tx-rw" name="tx-rw" style="width:50px;"/>
 </div>
 
 <div>
 <label for="tx-hp">No. HP</label>
-<input tyle="text" id="tx-hp" name="tx-hp"/>
+<input type="text" id="tx-hp" name="tx-hp"/>
 </div>
 
 <div>
 <label for="tx-spl">No. SPL</label>
-<input tyle="text" id="tx-spl" name="tx-spl"/>
+<input type="text" id="tx-spl" name="tx-spl"/>
 </div>
 
 <div>
@@ -72,17 +72,34 @@ Registrasi Pelanggan Baru
 
 </div>
 
-
 <div id="msg" class="msg"></div>
 
-<div id="tabel" style="min-width:800px;"></div>
+<table class="tablex">
+<thead>
+	<tr>
+	<th>#</th>
+	<th>ID</th>
+	<th>Calon Pelanggan</th>
+	<th>RT</th>
+	<th>RW</th>
+	<th>No. HP</th>
+	<th>No. SPL</th>
+	<th>Cabang</th>
+	<th>Tgl</th>
+	<th>DEL</th>
+	</tr>
+</thead>
+
+<tbody id="tbody">
+</tbody>
+</table>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
 
 	$('#opt-upp').load('ctrl/main.php?gif=upp');
-	$('#tabel').load('ctrl/reg-pelanggan.php?gif=pel-baru');
+	$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 
 	$('#btn-reset').click(function(){
 		$('#form')[0].reset();
@@ -90,7 +107,16 @@ $(document).ready(function(){
 	});
 
 	$('#btn-submit').click(function(){
-/*		$('#msg').css('display','block');*/
+		$('#msg').css('display','none');
+		if(
+		$('#tx-id').val()!='' 
+		&& $('#tx-nama').val()!='' 
+		&& $('#tx-alamat').val()!='' 
+		&& $('#tx-rt').val()!='' 
+		&& $('#tx-rw').val()!='' 
+		&& $('#tx-hp').val()!='' 
+		&& $('#tx-spl').val()!='' 
+		){
 		var data=$('#form').serialize();
 		$.ajax({
 			type:'POST',
@@ -98,12 +124,18 @@ $(document).ready(function(){
 			data:data,
 			success:function(e){
 				/*$('#msg').html(e);*/
-				$('#tabel').load('ctrl/reg-pelanggan.php?gif=pelanggan-baru');
+				$('#form')[0].reset();
+				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 			},
 			error:function(){
+				$('#msg').css('display','block');
 				$('#msg').html('Gagal menyimpan data.');
 			}
 		});
+		}else{
+			$('#msg').css('display','block');
+			$('#msg').html('Lengkapi form terlebih dahulu !');
+		}
 	});
 
 });

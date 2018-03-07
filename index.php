@@ -27,8 +27,8 @@
 	</div>
 
 	<div id="sidebar">
-<ul>
-<li>1</li>
+<ul class="side-menu">
+<li><a href="?p=reg-pelanggan">Registrasi Pelanggan</a></li>
 <li>1</li>
 <li>1</li>
 <li>1</li>
