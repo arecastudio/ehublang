@@ -35,7 +35,7 @@
 			<li style="float:right;"><a href="#">Logout&nbsp;<img style="width:15px;" src="static/icon/logout.png"/></a></li>
 		</ul>
 	</div>
-
+<div id="floated-div">
 	<div id="sidebar">
 
 		<a href="?p=reg-pelanggan" title="Registrasi pelanggan baru" class="sub-side-menu">
@@ -91,7 +91,11 @@ if(isset($_GET['p']) && $_GET['p']!=''){
 }
 		?>
 	</div><!--content-->
-    	<div id="footer"></div>
+    </div><!-- floated-div -->	
+	<div id="footer">
+		<hr/>
+		 <a href="https://arecastudio.github.io/" target="_blank">Areca Studio</a>&copy;2018. Hak cipta dilindungi Undang-Undang.
+	</div>
 </body>
 
 
