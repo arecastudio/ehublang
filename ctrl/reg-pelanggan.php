@@ -22,7 +22,7 @@ if( isset($_GET['gif']) && $_GET['gif']=='pel-baru'  ){
 			<td style=\"text-align:center\">$row[8]</td>
 			<td style=\"text-align:center\">$row[9]</td>
 			<td style=\"text-align:center;\">
-				<a class=\"btn-del\" href=\"#\" id=\"$row[0]\"><img class=\"icon-sm\" title=\"Hapus calon pelanggan ini.\" src=\"static/icon/sampah.png\" /></a>
+				<span class=\"btn-del\" id=\"$row[0]\"><img class=\"icon-sm\" title=\"Hapus calon pelanggan ini.\" src=\"static/icon/sampah.png\" /></span>
 			</td>
 		</tr>
 		";
