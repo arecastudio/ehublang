@@ -15,6 +15,10 @@
     <script type="text/javascript" src="static/jquery-ui.js"></script>
     <link href="static/jquery-ui.css" rel="stylesheet">
 
+    <!-- jquery-dataTables -->
+    <script type="text/javascript" src="static/jquery.dataTables.min.js"></script>
+    <link href="static/jquery.dataTables.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="static/style.css" rel="stylesheet">
 
@@ -22,17 +26,18 @@
 <body>
     	<div id="head">
 		<ul id="navbar">
-			<li><a href="?">Home</a></li>
+			<li><a href="?"><img src="static/icon/home.png" style="width:15px;"/>&nbsp;Home</a></li>
 			<li><a href="#">Berkas</a></li>
 			<li><a href="#">Proses</a></li>
 			<li><a href="#">Laporan</a></li>
 			<li><a href="#">Pengaturan</a></li>
 			<li><a href="#">Manual</a></li>
-			<li style="float:right;"><a href="#">Logout</a></li>
+			<li style="float:right;"><a href="#">Logout&nbsp;<img style="width:15px;" src="static/icon/logout.png"/></a></li>
 		</ul>
 	</div>
 
 	<div id="sidebar">
+
 		<a href="?p=reg-pelanggan" title="Registrasi pelanggan baru" class="sub-side-menu">
 		<div class="menu-md">
 
@@ -41,6 +46,26 @@
 			<small>Registrasi</small>
 		</div>
 		</a>
+
+		<a href="?p=reg-pelanggan" title="Data Registasi" class="sub-side-menu">
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/data-registrasi.png"/>
+			<br/>
+			<small>Data Registrasi</small>
+		</div>
+		</a>
+
+
+		<a href="?p=reg-pelanggan" title="Data Blok" class="sub-side-menu">
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/data-blok.png"/>
+			<br/>
+			<small>Data Blok</small>
+		</div>
+		</a>
+
 	</div>
 
     	<div id="content">
@@ -59,8 +84,10 @@ if(isset($_GET['p']) && $_GET['p']!=''){
 			require_once('view/cetak-pelanggan.html');
 			break;
 		default:
-			echo"Welcome.";
+			echo"<img src=\"static/icon/background-1.png\" />";
 	}
+}else{
+	echo"<img src=\"static/icon/background-1.png\" />";
 }
 		?>
 	</div><!--content-->

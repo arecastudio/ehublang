@@ -11,10 +11,14 @@
 
 </style>
 
+<div class="path">
+Home / Berkas / Registrasi
+</div>
+
 <strong>
 Registrasi Pelanggan Baru
 </strong>
-
+<hr/>
 
 <div id="kotak">
 	<form id="form" class="">
@@ -68,7 +72,7 @@ Registrasi Pelanggan Baru
 
 <div id="msg" class="msg"></div>
 
-<table class="tablex">
+<table class="tablex" id="xreg-table">
 <thead>
 	<tr>
 	<th>#</th>
@@ -88,7 +92,7 @@ Registrasi Pelanggan Baru
 </tbody>
 <tfoot>
 	<tr>
-		<td colspan="10" style="font-style:italic;font-size:80%;">Tabel ini hanya menampilkan draft calon pelanggan untuk bulan berjalan.</td>
+		<td colspan="10" style="font-style:italic;font-size:80%;">Tabel ini hanya menampilkan draft calon pelanggan untuk bulan berjalan. Untuk melihat secara lengkap per tanggal, buka menu <strong>Data Registrasi<strong></td>
 	</tr>
 </tfoot>
 </table>
@@ -98,6 +102,8 @@ Registrasi Pelanggan Baru
 $(document).ready(function(){
 
 /*	$('#opt-upp').selectmenu();*/
+
+	$('#reg-table').DataTable();
 
 	$('#opt-upp').load('ctrl/main.php?gif=upp');
 	$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
