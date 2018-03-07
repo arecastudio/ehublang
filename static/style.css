@@ -63,7 +63,7 @@ hr{
 
 #sidebar{
 	float:left;
-	width:100px;
+	min-width:100px;
 	height:600px;;
 	padding:1px;
 /*	border:solid 1px #ccc;*/
@@ -79,6 +79,7 @@ hr{
 	border:solid 1px #ccc;
 	margin-left:5px;
 	padding:5px;
+	width:80%;
 }
 
 .msg{
