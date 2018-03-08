@@ -64,7 +64,6 @@ hr{
 #sidebar{
 	float:left;
 	min-width:100px;
-	height:600px;;
 	padding:1px;
 /*	border:solid 1px #ccc;*/
 }
@@ -79,7 +78,7 @@ hr{
 	border:solid 1px #ccc;
 	margin-left:5px;
 	padding:5px;
-	width:80%;
+	width:83%;
 }
 
 .msg{
@@ -97,6 +96,7 @@ hr{
 .tablex{
 	background-color:#fff;
 	border-collapse: collapse;
+	width: 100%;
 }
 .tablex thead{
 	background:linear-gradient(#0000ee,#000033);
@@ -144,6 +144,10 @@ label{
 
 .icon-sm{
 	width:20px;
+}
+
+.icon-xm{
+	width:10px;
 }
 
 .menu-md{

@@ -21,7 +21,9 @@
 
     <!-- Custom styles for this template -->
     <link href="static/style.css" rel="stylesheet">
-
+<!-- GOOGLE MAP API KEY
+ AIzaSyDbKSZYsGryBrvYDGHN55xEOtXpWqE6WIQ
+-->
   </head>
 <body>
     	<div id="head">
