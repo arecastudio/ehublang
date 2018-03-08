@@ -12,7 +12,7 @@
 	margin-right:5px;
 }
 #map {
-	height:950px;
+	height:850px;
 	width: 60%;
 	float: left;
 	color: black;
@@ -131,12 +131,12 @@ Registrasi Pelanggan Baru
 <hr/>
 
 <div>
-<label for="lok-rmh">Lokasi Koordinat</label>
+<label for="lok-rmh">Lok. Koordinat</label>
 <input type="text" name="lok-rmh" id="lok-rmh" class="isian" readonly style="color: red;" />
 </div>
 
 <div>
-<label for="tx-luas">Luas Tanah</label>
+<label for="tx-luas">Luas (M<sup>2</sup>)</label>
 <input type="text" id="tx-luas" name="tx-luas" class="isian" placeholder="Luas tanah dan bangunan" />
 </div>
 
@@ -232,44 +232,58 @@ $(document).ready(function(){
 
 	$('#chk-sama').change(function(){
 		//console.log('anjir...');
-		$('#tx-nama').prop('disabled',$(this).is(':checked'));
-		$('#tx-alamat').prop('disabled',$(this).is(':checked'));
-		$('#tx-rt').prop('disabled',$(this).is(':checked'));
-		$('#tx-rw').prop('disabled',$(this).is(':checked'));
-		$('#opt-kecamatan').prop('disabled',$(this).is(':checked'));
-		$('#opt-kelurahan').prop('disabled',$(this).is(':checked'));
+		//if($('#chk-sama').is(':checked')){
+			$('#tx-nama').prop('disabled',$(this).is(':checked'));
+			$('#tx-alamat').prop('disabled',$(this).is(':checked'));
+			$('#tx-rt').prop('disabled',$(this).is(':checked'));
+			$('#tx-rw').prop('disabled',$(this).is(':checked'));
+			$('#opt-kecamatan').prop('disabled',$(this).is(':checked'));
+			$('#opt-kelurahan').prop('disabled',$(this).is(':checked'));
 
 
-		$('#tx-nama').val($('#tx-nama-1').val());
-		$('#tx-alamat').val($('#tx-alamat-1').val());
-		$('#tx-rt').val($('#tx-rt-1').val());
-		$('#tx-rw').val($('#tx-rw-1').val());
-		$('#opt-kecamatan').val($('#opt-kecamatan-1').val());
-		$('#opt-kelurahan').val($('#opt-kelurahan-1').val());
+			$('#tx-nama').val($('#tx-nama-1').val());
+			$('#tx-alamat').val($('#tx-alamat-1').val());
+			$('#tx-rt').val($('#tx-rt-1').val());
+			$('#tx-rw').val($('#tx-rw-1').val());
+			$('#opt-kecamatan').val($('#opt-kecamatan-1').val());
+			$('#opt-kelurahan').val($('#opt-kelurahan-1').val());
+		//}
 	});
 
 	$('#tx-nama-1').change(function(){
-		$('#chk-sama').trigger('change');
+		if($('#chk-sama').is(':checked')){
+			$('#tx-nama').val($(this).val());
+		}
 	});
 
 	$('#tx-alamat-1').change(function(){
-		$('#chk-sama').trigger('change');
+		if($('#chk-sama').is(':checked')){
+			$('#tx-alamat').val($(this).val());
+		}
 	});
 
 	$('#tx-rt-1').change(function(){
-		$('#chk-sama').trigger('change');
+		if($('#chk-sama').is(':checked')){
+			$('#tx-rt').val($(this).val());
+		}
 	});
 
 	$('#tx-rw-1').change(function(){
-		$('#chk-sama').trigger('change');
+		if($('#chk-sama').is(':checked')){
+			$('#tx-rw').val($(this).val());
+		}
 	});
 
 	$('#opt-kecamatan-1').change(function(){
-		$('#chk-sama').trigger('change');
+		if($('#chk-sama').is(':checked')){
+			$('#opt-kecamatan').val($(this).val());
+		}
 	});
 
 	$('#opt-kelurahan-1').change(function(){
-		$('#chk-sama').trigger('change');
+		if($('#chk-sama').is(':checked')){
+			$('#opt-kelurahan').val($(this).val());
+		}
 	});
 
 	$('#btn-reset').click(function(){
