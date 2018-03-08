@@ -133,7 +133,7 @@ input[type=text]{
 
 label{
 	display:inline-block;
-	min-width:130px;
+	min-width:110px;
 	text-align:left;
 	margin-bottom:10px;
 }

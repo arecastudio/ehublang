@@ -12,11 +12,14 @@
 	margin-right:5px;
 }
 #map {
-	height:400px;
+	height:950px;
 	width: 60%;
 	float: left;
 	color: black;
 	margin-bottom:5px;
+}
+.isian{
+	min-width: 260px;
 }
 </style>
 
@@ -32,21 +35,55 @@ Registrasi Pelanggan Baru
 <div style="display:inline;	overflow:auto;">
 <div id="kotak">
 	<form id="form" class="">
+
 <div>
 <label for="tx-id">Nomor Identitas</label>
-<input type="text" id="tx-id" name="tx-id" placeholder="KTP / SIM / NPWP"/>
+<input type="text" id="tx-id" name="tx-id" placeholder="KTP / SIM / NPWP" class="isian"/>
+</div>
+<hr/>
+<div>
+<label for="tx-nama-1">Pemohon</label>
+<input type="text" id="tx-nama-1" name="tx-nama-1" placeholder="Nama lengkap" class="isian" />
+</div>
+
+<div>
+<label for="tx-alamat-1">Alamat</label>
+<textarea id="tx-alamat-1" name="tx-alamat-1" style="width:99%;height:50px;"></textarea>
+</div>
+
+<div>
+<label for="tx-rt-1">RT/RW</label>
+<input type="text" id="tx-rt-1" name="tx-rt-1" style="width:50px;"/>&nbsp;/&nbsp;
+<input type="text" id="tx-rw-1" name="tx-rw-1" style="width:50px;"/>
+</div>
+
+<div>
+<label for="opt-kecamatan-1">Kecamatan</label>
+<select id="opt-kecamatan-1" name="opt-kecamatan-1" class="isian"></select>
+</div>
+
+<div>
+<label for="opt-kelurahan-1">Kelurahan</label>
+<select id="opt-kelurahan-1" name="opt-kelurahan-1" class="isian"></select>
 </div>
 
 
+<hr/>
+<div style="background-color: #eee;margin-top: 10px;margin-bottom: 10px;">
+
+<div style="margin-bottom: 15px;">
+	<input type="checkbox" name="chk-sama" id="chk-sama">&nbsp;Sama dengan data pemohon.
+</div>
+
 <div>
 <label for="tx-nama">Nama</label>
-<input type="text" id="tx-nama" name="tx-nama"/>
+<input type="text" id="tx-nama" name="tx-nama" placeholder="Nama dalam rekening" class="isian" />
 </div>
 
 
 <div>
 <label for="tx-alamat">Alamat</label>
-<textarea id="tx-alamat" name="tx-alamat" style="width:99%;height:50px;"></textarea>
+<textarea id="tx-alamat" name="tx-alamat" style="width:98%;height:50px;"></textarea>
 </div>
 
 <div>
@@ -56,25 +93,76 @@ Registrasi Pelanggan Baru
 </div>
 
 <div>
-<label for="tx-hp">No. HP</label>
-<input type="text" id="tx-hp" name="tx-hp"/>
+<label for="opt-kecamatan">Kecamatan</label>
+<select id="opt-kecamatan" name="opt-kecamatan" class="isian"></select>
 </div>
 
 <div>
+<label for="opt-kelurahan">Kelurahan</label>
+<select id="opt-kelurahan" name="opt-kelurahan" class="isian"></select>
+</div>
+
+</div><!--data sama dengan di atas-->
+<hr/>
+
+<div>
 <label for="tx-spl">No. SPL</label>
-<input type="text" id="tx-spl" name="tx-spl"/>
+<input type="text" id="tx-spl" name="tx-spl" class="isian" placeholder="Nomor Register" />
 </div>
 
 <div>
 	<label for="opt-upp">Area Service</label>
-	<select id="opt-upp" name="opt-upp">
+	<select id="opt-upp" name="opt-upp" class="isian">
 		<!-- auto-create-content -->
 	</select>
 </div>
+<hr/>
 
 <div>
-<label for="lok-rmh">Lokasi Rmh</label>
-<span id="lok-rmh"><span id="hasil"></span></span>
+<label for="tx-hp">No. HP</label>
+<input type="text" id="tx-hp" name="tx-hp" class="isian" placeholder="Nomor handphone pelanggan untuk info survey dan biaya penerbitan" />
+</div>
+
+<div>
+<label for="tx-job">Pekerjaan</label>
+<input type="text" id="tx-job" name="tx-job" class="isian"/>
+</div>
+
+<hr/>
+
+<div>
+<label for="lok-rmh">Lokasi Koordinat</label>
+<input type="text" name="lok-rmh" id="lok-rmh" class="isian" readonly style="color: red;" />
+</div>
+
+<div>
+<label for="tx-luas">Luas Tanah</label>
+<input type="text" id="tx-luas" name="tx-luas" class="isian" placeholder="Luas tanah dan bangunan" />
+</div>
+
+<div>
+	<label for="opt-jnsbgn">Jenis Bgn</label>
+	<select id="opt-jnsbgn" name="opt-jnsbgn" class="isian"></select>
+</div>
+
+<div>
+<label for="tx-jmlhuni">Jml Penghuni</label>
+<input type="text" id="tx-jmlhuni" name="tx-jmlhuni" class="isian" placeholder="Jumlah penghuni rumah" />
+</div>
+
+<div>
+	<label for="opt-statrmh">Status Rmh</label>
+	<select id="opt-statrmh" name="opt-statrmh" class="isian"></select>
+</div>
+
+<div>
+	<label for="opt-perun">Peruntukan</label>
+	<select id="opt-perun" name="opt-perun" class="isian"></select>
+</div>
+
+<div>
+	<label for="opt-airalt">Sumber Air</label>
+	<select id="opt-airalt" name="opt-airalt" class="isian"></select>
 </div>
 
 <input type="hidden" name="tx-pos-lat" id="tx-pos-lat" />
@@ -132,14 +220,75 @@ $(document).ready(function(){
 	$('#reg-table').DataTable();
 
 	$('#opt-upp').load('ctrl/main.php?gif=upp');
+	$('#opt-kecamatan-1').load('ctrl/main.php?gif=kecamatan');
+	$('#opt-kelurahan-1').load('ctrl/main.php?gif=kelurahan');
+	$('#opt-kecamatan').load('ctrl/main.php?gif=kecamatan');
+	$('#opt-kelurahan').load('ctrl/main.php?gif=kelurahan');
+	$('#opt-statrmh').load('ctrl/main.php?gif=statrmh');
+	$('#opt-jnsbgn').load('ctrl/main.php?gif=jnsbgn');
+	$('#opt-perun').load('ctrl/main.php?gif=perun');
+	$('#opt-airalt').load('ctrl/main.php?gif=airalt');
 	$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
+
+	$('#chk-sama').change(function(){
+		//console.log('anjir...');
+		$('#tx-nama').prop('disabled',$(this).is(':checked'));
+		$('#tx-alamat').prop('disabled',$(this).is(':checked'));
+		$('#tx-rt').prop('disabled',$(this).is(':checked'));
+		$('#tx-rw').prop('disabled',$(this).is(':checked'));
+		$('#opt-kecamatan').prop('disabled',$(this).is(':checked'));
+		$('#opt-kelurahan').prop('disabled',$(this).is(':checked'));
+
+
+		$('#tx-nama').val($('#tx-nama-1').val());
+		$('#tx-alamat').val($('#tx-alamat-1').val());
+		$('#tx-rt').val($('#tx-rt-1').val());
+		$('#tx-rw').val($('#tx-rw-1').val());
+		$('#opt-kecamatan').val($('#opt-kecamatan-1').val());
+		$('#opt-kelurahan').val($('#opt-kelurahan-1').val());
+	});
+
+	$('#tx-nama-1').change(function(){
+		$('#chk-sama').trigger('change');
+	});
+
+	$('#tx-alamat-1').change(function(){
+		$('#chk-sama').trigger('change');
+	});
+
+	$('#tx-rt-1').change(function(){
+		$('#chk-sama').trigger('change');
+	});
+
+	$('#tx-rw-1').change(function(){
+		$('#chk-sama').trigger('change');
+	});
+
+	$('#opt-kecamatan-1').change(function(){
+		$('#chk-sama').trigger('change');
+	});
+
+	$('#opt-kelurahan-1').change(function(){
+		$('#chk-sama').trigger('change');
+	});
 
 	$('#btn-reset').click(function(){
 		$('#form')[0].reset();
 		$('#msg').css('display','none');
 		initMap.clearMarkers();
 		initMap.deleteMarkers();			    
-		$('#hasil').html('');
+		$('#lok-rmh').val('');
+
+
+		$('#tx-nama').removeAttr("disabled");
+		$('#tx-alamat').removeAttr("disabled");
+		$('#tx-rt').removeAttr("disabled");
+		$('#tx-rw').removeAttr("disabled");
+		$('#opt-kecamatan').removeAttr("disabled");
+		$('#opt-kelurahan').removeAttr("disabled");
+
+
+		$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 	});
 
 	$('#btn-submit').click(function(){
@@ -160,12 +309,13 @@ $(document).ready(function(){
 			data:data,
 			success:function(e){
 				/*$('#msg').html(e);*/
-				$('#form')[0].reset();
+				/*$('#form')[0].reset();
 				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 				$('#tx-id').focus();
-				$('#hasil').html('');
+				$('#lok-rmh').val('');
 				initMap.clearMarkers();
-				initMap.deleteMarkers();			    
+				initMap.deleteMarkers();	*/		 
+				$('#btn-reset').trigger('click');   
 			},
 			error:function(req,stat,err){
 				$('#msg').css('display','block');
@@ -229,7 +379,8 @@ function initMap() {
     var result='{ Lat: '+clickLat.toFixed(5)+', Lon: '+clickLon.toFixed(5)+' }';
     console.log(result);
     //window.alert(result);
-    document.getElementById('hasil').innerHTML=result;
+    //document.getElementById('hasil').innerHTML=result;
+    document.getElementById('lok-rmh').value=result;
     document.getElementById('tx-pos-lon').value=clickLon.toFixed(5);
     document.getElementById('tx-pos-lat').value=clickLat.toFixed(5);
     //document.getElementById("lon").value = clickLon.toFixed(5);
