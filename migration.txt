@@ -1,0 +1,41 @@
+CREATE TABLE IF NOT EXISTS pelanggan_reg (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  no_ktp varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  nama_1 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  alamat_1 varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  rt_1 varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  rw_1 varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  kecamatan_1 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  kelurahan_1 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  nama_2 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  alamat_2 varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  rt_2 varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  rw_2 varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  kecamatan_2 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  kelurahan_2 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  no_spl varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  upp varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  no_hp varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  pekerjaan varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  pos_lat varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  pos_lon varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  luas tinyint(4) NOT NULL DEFAULT '0',
+  jns_bangunan varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  jml_penghuni int(11) NOT NULL DEFAULT '1',
+  stat_rmh varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  peruntukan varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  sumber_air varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  tgl_input TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
+  PRIMARY KEY (ID)
+) ENGINE=MyISAM;
+
+
+CREATE TABLE IF NOT EXISTS upp (
+  cabang char(2) NOT NULL,
+  NAMA varchar(20) DEFAULT NULL,
+  KACAB varchar(25) DEFAULT NULL,
+  NIP varchar(20) DEFAULT NULL,
+  IP varchar(50) NOT NULL DEFAULT '-',
+  code varchar(10) DEFAULT NULL,
+  PRIMARY KEY (cabang)
+) ENGINE=MyISAM

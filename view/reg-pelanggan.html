@@ -232,22 +232,20 @@ $(document).ready(function(){
 
 	$('#chk-sama').change(function(){
 		//console.log('anjir...');
-		//if($('#chk-sama').is(':checked')){
-			$('#tx-nama').prop('disabled',$(this).is(':checked'));
-			$('#tx-alamat').prop('disabled',$(this).is(':checked'));
-			$('#tx-rt').prop('disabled',$(this).is(':checked'));
-			$('#tx-rw').prop('disabled',$(this).is(':checked'));
-			$('#opt-kecamatan').prop('disabled',$(this).is(':checked'));
-			$('#opt-kelurahan').prop('disabled',$(this).is(':checked'));
+		$('#tx-nama').prop('disabled',$(this).is(':checked'));
+		$('#tx-alamat').prop('disabled',$(this).is(':checked'));
+		$('#tx-rt').prop('disabled',$(this).is(':checked'));
+		$('#tx-rw').prop('disabled',$(this).is(':checked'));
+		$('#opt-kecamatan').prop('disabled',$(this).is(':checked'));
+		$('#opt-kelurahan').prop('disabled',$(this).is(':checked'));
 
 
-			$('#tx-nama').val($('#tx-nama-1').val());
-			$('#tx-alamat').val($('#tx-alamat-1').val());
-			$('#tx-rt').val($('#tx-rt-1').val());
-			$('#tx-rw').val($('#tx-rw-1').val());
-			$('#opt-kecamatan').val($('#opt-kecamatan-1').val());
-			$('#opt-kelurahan').val($('#opt-kelurahan-1').val());
-		//}
+		$('#tx-nama').val($('#tx-nama-1').val());
+		$('#tx-alamat').val($('#tx-alamat-1').val());
+		$('#tx-rt').val($('#tx-rt-1').val());
+		$('#tx-rw').val($('#tx-rw-1').val());
+		$('#opt-kecamatan').val($('#opt-kecamatan-1').val());
+		$('#opt-kelurahan').val($('#opt-kelurahan-1').val());
 	});
 
 	$('#tx-nama-1').change(function(){
@@ -302,34 +300,113 @@ $(document).ready(function(){
 		$('#opt-kelurahan').removeAttr("disabled");
 
 
+		$('#tx-id').focus();
 		$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 	});
 
 	$('#btn-submit').click(function(){
+
+
+		var no_ktp=$('#tx-id').val();
+		var nama_1=$('#tx-nama').val();
+		var alamat_1=$('#tx-alamat').val();
+		var rt_1=$('#tx-rt').val();
+		var rw_1=$('#tx-rw').val();
+		var kecamatan_1=$('#opt-kecamatan').val();
+		var kelurahan_1=$('#opt-kelurahan').val();
+		var nama_2=$('#tx-nama-1').val();
+		var alamat_2=$('#tx-alamat-1').val();
+		var rt_2=$('#tx-rt-1').val();
+		var rw_2=$('#tx-rw-1').val();
+		var kecamatan_2=$('#opt-kecamatan-1').val();
+		var kelurahan_2=$('#opt-kelurahan-1').val();
+		var no_spl=$('#tx-spl').val();
+		var upp=$('#opt-upp').val();
+		var no_hp=$('#tx-hp').val();
+		var pekerjaan=$('#tx-job').val();
+		var pos_lat=$('#tx-pos-lat').val();
+		var pos_lon=$('#tx-pos-lon').val();
+		var luas=$('#tx-luas').val();
+		var jns_bangunan=$('#opt-jnsbgn').val();
+		var jml_penghuni=$('#tx-jmlhuni').val();
+		var stat_rmh=$('#opt-statrmh').val();
+		var peruntukan=$('#opt-perun').val();
+		var sumber_air=$('#opt-airalt').val();
+
 		$('#msg').css('display','none');
 		if(
-		$('#tx-id').val()!='' 
-		&& $('#tx-nama').val()!='' 
-		&& $('#tx-alamat').val()!='' 
-		&& $('#tx-rt').val()!='' 
-		&& $('#tx-rw').val()!='' 
-		&& $('#tx-hp').val()!='' 
-		&& $('#tx-spl').val()!='' 
+			no_ktp!=''
+			&& nama_1!=''
+			&& alamat_1!=''
+			&& rt_1!=''
+			&& rw_1!=''
+			&& kecamatan_1!=''
+			&& kelurahan_1!=''
+			&& nama_2!=''
+			&& alamat_2!=''
+			&& rt_2!=''
+			&& rw_2!=''
+			&& kecamatan_2!=''
+			&& kelurahan_2!=''
+			&& no_spl!=''
+			&& upp!=''
+			&& no_hp!=''
+			&& pekerjaan!=''
+			&& pos_lat!=''
+			&& pos_lon!=''
+			&& luas!=''
+			&& jns_bangunan!=''
+			&& jml_penghuni!=''
+			&& stat_rmh!=''
+			&& peruntukan!=''
+			&& sumber_air!=''
 		){
-		var data=$('#form').serialize();
+		/*var data=$('#form').serialize();*/
+
+
+		var data={
+			'no_ktp':no_ktp
+			,'nama_1':nama_1
+			,'alamat_1':alamat_1
+			,'rt_1':rt_1
+			,'rw_1':rw_1
+			,'kecamatan_1':kecamatan_1
+			,'kelurahan_1':kelurahan_1
+			,'nama_2':nama_2
+			,'alamat_2':alamat_2
+			,'rt_2':rt_2
+			,'rw_2':rw_2
+			,'kecamatan_2':kecamatan_2
+			,'kelurahan_2':kelurahan_2
+			,'no_spl':no_spl
+			,'upp':upp
+			,'no_hp':no_hp
+			,'pekerjaan':pekerjaan
+			,'pos_lat':pos_lat
+			,'pos_lon':pos_lon
+			,'luas':luas
+			,'jns_bangunan':jns_bangunan
+			,'jml_penghuni':jml_penghuni
+			,'stat_rmh':stat_rmh
+			,'peruntukan':peruntukan
+			,'sumber_air':sumber_air
+		}
+
 		$.ajax({
 			type:'POST',
 			url:'ctrl/reg-pelanggan.php',
+			dataType:'json',
 			data:data,
 			success:function(e){
-				/*$('#msg').html(e);*/
+				$('#btn-reset').trigger('click');   
+				$('#msg').css('display','block');
+				$('#msg').html(e);
 				/*$('#form')[0].reset();
 				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 				$('#tx-id').focus();
 				$('#lok-rmh').val('');
 				initMap.clearMarkers();
 				initMap.deleteMarkers();	*/		 
-				$('#btn-reset').trigger('click');   
 			},
 			error:function(req,stat,err){
 				$('#msg').css('display','block');

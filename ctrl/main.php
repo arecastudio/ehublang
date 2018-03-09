@@ -1,26 +1,37 @@
 <?php
-require_once('default.php');
+//require_once('default.php');
+
+require_once('Connection.php');
+
+$connection=new Connection();
+$con=$connection->con;
 
 if(isset($_GET['gif'])){
 	switch($_GET['gif']){
 		case 'upp':
 			$rs=$con->query("SELECT cabang,nama,ip FROM upp WHERE cabang<>'00' ORDER BY cabang ASC;");
-			while($row=$rs->fetch_row()){
-				echo"<option value=\"$row[0]\"> $row[0] - $row[1]</option>";
+			if($rs){
+				while($row=$rs->fetch_row()){
+					echo"<option value=\"$row[0]\"> $row[0] - $row[1]</option>";
+				}
 			}
 			$rs->close();
 			break;
 		case 'kecamatan':
 			$rs=$con->query("SELECT IDKecamatan,Nama FROM kecamatan WHERE 1 ORDER BY Nama ASC;");
-			while($row=$rs->fetch_row()){
-				echo"<option value=\"$row[0]\"> $row[1]</option>";
+			if($rs){
+				while($row=$rs->fetch_row()){
+					echo"<option value=\"$row[0]\"> $row[1]</option>";
+				}
 			}
 			$rs->close();
 			break;
 		case 'kelurahan':
 			$rs=$con->query("SELECT IDKelurahan,Nama FROM kelurahan WHERE 1 ORDER BY Nama ASC;");
-			while($row=$rs->fetch_row()){
-				echo"<option value=\"$row[0]\"> $row[1]</option>";
+			if($rs){
+				while($row=$rs->fetch_row()){
+					echo"<option value=\"$row[0]\"> $row[1]</option>";
+				}
 			}
 			$rs->close();
 			break;
@@ -58,3 +69,4 @@ if(isset($_GET['gif'])){
 
 
 $con->close();
+//$connection->disconnect();
