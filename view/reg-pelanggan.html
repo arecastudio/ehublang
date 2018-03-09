@@ -13,7 +13,7 @@
 }
 #map {
 	height:850px;
-	width: 60%;
+	width: 55%;
 	float: left;
 	color: black;
 	margin-bottom:5px;
@@ -396,11 +396,16 @@ $(document).ready(function(){
 			type:'POST',
 			url:'ctrl/reg-pelanggan.php',
 			dataType:'json',
+			contentType:'application/json;charset=utf-8',
 			data:data,
 			success:function(e){
 				$('#btn-reset').trigger('click');   
 				$('#msg').css('display','block');
-				$('#msg').html(e);
+				if(e.status=='success'){
+					$('#msg').html('Berhasil menyimpan data.');
+				}else{
+					$('#msg').html(e);
+				}
 				/*$('#form')[0].reset();
 				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 				$('#tx-id').focus();

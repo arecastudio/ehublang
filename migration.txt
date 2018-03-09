@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS pelanggan_reg (
-  ID int(11) NOT NULL AUTO_INCREMENT,
+  ID int NOT NULL AUTO_INCREMENT,
   no_ktp varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   nama_1 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   alamat_1 varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS pelanggan_reg (
   stat_rmh varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   peruntukan varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   sumber_air varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  tgl_input TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
+  tgl_input TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (ID)
 ) ENGINE=MyISAM;
 

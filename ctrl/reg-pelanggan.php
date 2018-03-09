@@ -44,7 +44,7 @@ ORDER BY
 	$i=0;
 	$rs=$con->query($sql);
 	//$n=$rs->num_rows;
-	if(1==1){//jika ada data
+	if($rs){//jika ada data
 		while($row=$rs->fetch_row()){
 			$i++;
 			$tabel.="
@@ -203,13 +203,16 @@ if(isset($_POST['no_ktp'])){
 		'$peruntukan',
 		'$sumber_air'
 	);";
-
+// https://stackoverflow.com/questions/9676084/how-do-i-return-a-proper-success-error-message-for-jquery-ajax-using-php
 	$rs=$con->query($sql);
+	$resp=array();
 	if($rs){
-		echo "Berhasil menambahkan calon pelanggan baru.";
+		$resp['status']="success";
 	}else{
-		echo "Gagal menambahkan calon pelanggan.";
+		$resp['status']= "Gagal menambahkan calon pelanggan. ".$con->error;
 	}
+	header('Content-type: application/json');
+	echo json_encode($resp);
 	//$rs->close();
 }
 
