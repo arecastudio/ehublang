@@ -205,14 +205,11 @@ if(isset($_POST['no_ktp'])){
 	);";
 // https://stackoverflow.com/questions/9676084/how-do-i-return-a-proper-success-error-message-for-jquery-ajax-using-php
 	$rs=$con->query($sql);
-	$resp=array();
 	if($rs){
-		$resp['status']="success";
+		echo"Berhasil menyimpan data.";
 	}else{
-		$resp['status']= "Gagal menambahkan calon pelanggan. ".$con->error;
+		echo"Gagal menyimpan data.";
 	}
-	header('Content-type: application/json');
-	echo json_encode($resp);
 	//$rs->close();
 }
 

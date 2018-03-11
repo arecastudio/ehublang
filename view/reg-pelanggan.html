@@ -394,18 +394,15 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:'POST',
-			url:'ctrl/reg-pelanggan.php',
+			url:'ctrl/reg-pelanggan.php',/*
 			dataType:'json',
-			contentType:'application/json;charset=utf-8',
+			contentType:'application/json;charset=utf-8',*/
 			data:data,
 			success:function(e){
 				$('#btn-reset').trigger('click');   
-				$('#msg').css('display','block');
-				if(e.status=='success'){
-					$('#msg').html('Berhasil menyimpan data.');
-				}else{
-					$('#msg').html(e);
-				}
+				/*$('#msg').css('display','block');
+
+				$('#msg').html(e);*/
 				/*$('#form')[0].reset();
 				$('#tbody').load('ctrl/reg-pelanggan.php?gif=pel-baru');
 				$('#tx-id').focus();
