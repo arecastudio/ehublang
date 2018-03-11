@@ -1,3 +1,6 @@
+<?php
+require_once('ctrl/Connection.php');
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" href="static/icon/favicon.png">
 
     <title>E-Hublang - PDAM Jayapura</title>
 
@@ -26,6 +29,9 @@
 -->
   </head>
 <body>
+<?php
+if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
+?>
     	<div id="head">
 		<ul id="navbar">
 			<li><a href="?"><img src="static/icon/home.png" style="width:15px;"/>&nbsp;Home</a></li>
@@ -34,10 +40,15 @@
 			<li><a href="#">Laporan</a></li>
 			<li><a href="#">Pengaturan</a></li>
 			<li><a href="#">Manual</a></li>
-			<li style="float:right;"><a href="#">Logout&nbsp;<img style="width:15px;" src="static/icon/logout.png"/></a></li>
+			<li style="float:right;"><a href="#" id="logout">Logout&nbsp;<img style="width:15px;" src="static/icon/logout.png"/></a></li>
 		</ul>
 	</div>
+	<?php }?>
 <div id="floated-div">
+
+<?php
+if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
+?>
 	<div id="sidebar">
 
 		<a href="?p=reg-pelanggan" title="Registrasi pelanggan baru" class="sub-side-menu">
@@ -49,12 +60,12 @@
 		</div>
 		</a>
 
-		<a href="?p=reg-pelanggan" title="Data Registasi" class="sub-side-menu">
+		<a href="?p=data-survey" title="Data Survey" class="sub-side-menu">
 		<div class="menu-md">
 
 			<img class="icon-md" id="ic-reg" src="static/icon/data-registrasi.png"/>
 			<br/>
-			<small>Data Registrasi</small>
+			<small>Data Survey</small>
 		</div>
 		</a>
 
@@ -69,27 +80,40 @@
 		</a>
 
 	</div>
-
+<?php
+}
+?>
     	<div id="content">
 		<?php
-		
-if(isset($_GET['p']) && $_GET['p']!=''){
-	switch($_GET['p']){
-		case 'reg-pelanggan':
-			require_once('view/reg-pelanggan.html');
-			break;
-		case 'info-pelanggan':
-			require_once('view/info-pelanggan.html');
-			//echo "halaman info pelanggan";
-			break;
-		case 'cetak-pelanggan':
-			require_once('view/cetak-pelanggan.html');
-			break;
-		default:
-			echo"<img src=\"static/icon/background-1.png\" />";
+
+if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
+
+	if(isset($_GET['p']) && $_GET['p']!=''){
+		switch($_GET['p']){
+			case 'reg-pelanggan':
+				require_once('view/reg-pelanggan.html');
+				break;
+			case 'info-pelanggan':
+				require_once('view/info-pelanggan.html');
+				//echo "halaman info pelanggan";
+				break;
+			case 'data-survey':
+				require_once('view/data-survey.html');
+				break;
+			case 'cetak-pelanggan':
+				require_once('view/cetak-pelanggan.html');
+				break;
+			case 'login':
+				//require_once('view/login.html');
+				break;
+			default:
+				echo"<img src=\"static/icon/background-1.png\" />";
+		}
+	}else{
+		echo"<img src=\"static/icon/background-1.png\" />";
 	}
 }else{
-	echo"<img src=\"static/icon/background-1.png\" />";
+	require_once('view/login.html');
 }
 		?>
 	</div><!--content-->
@@ -107,7 +131,16 @@ if(isset($_GET['p']) && $_GET['p']!=''){
 
 <script>
 $(document).ready(function(){
-
+	$('#logout').click(function(e){
+		$.ajax({
+			type:'POST',
+			data:{'logout':1},
+			url:'ctrl/auth.php',
+			success:function(e){
+				window.location.href='?';
+			}
+		});
+	});
 });
 </script>
 

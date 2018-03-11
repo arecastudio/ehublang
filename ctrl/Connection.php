@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Connection{
 	private $host="127.0.0.1";

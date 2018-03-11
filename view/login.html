@@ -1,0 +1,67 @@
+<div id="login-box">
+	<center>
+
+		<img src="static/icon/favicon.png"/><br/>
+		<h3>E-Hublang PDAM Jayapura</h3> <small>Customer Registration Controlling System</small>
+
+<h5>Login User</h5>
+
+<div>
+	<label for="usr">Username</label>
+	<input type="text" id="usr" name="usr" placeholder="Masukkan user name"/>
+</div>
+<div>
+	<label for="pas">Password</label>
+	<input type="text" id="pas" name="pas" placeholder="Masukkan password"/>
+</div>
+<div>
+	<button id="btn-submit" name="btn-submit">Login</button>
+</div>
+
+</center>
+</div><!-- login-box -->
+
+
+<script>
+$(document).ready(function(){
+	$('#btn-submit').click(function(){
+		var usr=$('#usr').val();
+		var pas=$('#pas').val();
+		
+		var data={'login':1,'pas':pas,'usr':usr};
+		$.ajax({
+			type:'POST',
+			data:data,
+			url:'ctrl/auth.php',
+			success:function(e){
+				console.log('sukses. '+e);
+				window.location.href='?';
+			},
+			error:function(){
+				console.log('gagal.');
+			}
+		});
+	});
+});
+</script>
+
+<style type="text/css">
+#content{
+	border:0px;
+	width:98%;
+	text-align:center;	
+}
+#garing{border:1px solid #ccc;}
+#footer{
+	display:none;
+	visibility:none;
+}
+
+#login-box{
+text-align:center;
+background-color:#eee;
+padding:5px;
+border-radius:5px;
+}
+
+</style>

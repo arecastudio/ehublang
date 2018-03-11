@@ -13,13 +13,13 @@ hr{
 
 
 #footer{
-	positon:absolute;
-	bottom:0;
 	text-align:center;
 	font-size:10px;
 	color:#333;	
 	font-style:italic;
 	margin-top:10px;
+	positon:fixed;
+	bottom:0px;
 }
 #footer a{
 	text-decoration:none;
