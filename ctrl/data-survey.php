@@ -26,7 +26,7 @@ if(isset($_GET['gif']) && $_GET['gif']!=''){
 				<tr>
 					<td class=\"tengah\">$i</td>
 					<td class=\"tengah\">$row[1]</td>
-					<td>$row[2]</td>
+					<td><a id=\"$row[0]\" href=\"#\" style=\"text-decoration:none;\">$row[2]</a></td>
 					<td>$row[3]</td>
 					<td class=\"tengah\">$row[4]</td>
 				</tr>
