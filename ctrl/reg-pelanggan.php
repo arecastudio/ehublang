@@ -22,7 +22,7 @@ SELECT DISTINCT
 	kecamatan_2,
 	kelurahan_2,
 	no_spl,
-	upp,
+	(SELECT u.code FROM upp AS u WHERE u.cabang=pelanggan_reg.upp LIMIT 1)AS cbg,
 	no_hp,
 	pekerjaan,
 	pos_lat,
@@ -32,7 +32,8 @@ SELECT DISTINCT
 	jml_penghuni,
 	stat_rmh,
 	peruntukan,
-	sumber_air
+	sumber_air,
+	tgl_input
 FROM 
 	pelanggan_reg
 WHERE
@@ -51,20 +52,20 @@ ORDER BY
 			<tr>
 				<td style=\"text-align:center\">$i</td>
 				<td style=\"text-align:center\"><img class=\"icon-sm\" src=\"static/icon/person.png\" /><br/><small>$row[1]</small></td>
-				<td>$row[2]
+				<td>$row[8]
 					<hr/>
-					<small><img class=\"icon-xm\" src=\"static/icon/phone.png\" /> $row[6]</small>
+					<small><img class=\"icon-xm\" src=\"static/icon/phone.png\" /> $row[16]</small>
 				</td>
 				<td style=\"text-align:center\">
-					$row[3]
+					$row[9]
 					<hr/>
-					<small>Lat: $row[10], Lon: $row[11]</small>
+					<small>Lat: $row[18], Lon: $row[19]</small>
 				</td>
-				<td style=\"text-align:center\">$row[4]</td>
-				<td style=\"text-align:center\">$row[5]</td>
-				<td style=\"text-align:center\"><small>$row[7]</small></td>
-				<td style=\"text-align:center\">$row[8]</td>
-				<td style=\"text-align:center\"><small>$row[9]</small></td>
+				<td style=\"text-align:center\">$row[10]</td>
+				<td style=\"text-align:center\">$row[11]</td>
+				<td style=\"text-align:center\"><small>$row[14]</small></td>
+				<td style=\"text-align:center\">$row[15]</td>
+				<td style=\"text-align:center\"><small>$row[26]</small></td>
 				<td style=\"text-align:center;\">
 					<span class=\"btn-del\" id=\"$row[0]\"><img class=\"icon-sm\" title=\"Hapus calon pelanggan ini.\" src=\"static/icon/sampah.png\" /></span>
 				</td>
