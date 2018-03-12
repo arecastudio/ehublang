@@ -174,3 +174,8 @@ label{
 .btn-del{
 	cursor:pointer;
 }
+
+
+.kiri{text-align:left;}
+.tengah{text-align:center;}
+.kanan{text-align:right;}

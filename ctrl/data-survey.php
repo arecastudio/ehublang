@@ -14,11 +14,11 @@ if(isset($_GET['gif']) && $_GET['gif']!=''){
 				$i++;
 				echo "
 				<tr>
-					<td>$i</td>
-					<td>$row[1]</td>
+					<td class=\"tengah\">$i</td>
+					<td class=\"tengah\">$row[1]</td>
 					<td>$row[2]</td>
 					<td>$row[3]</td>
-					<td>$row[4]</td>
+					<td class=\"tengah\">$row[4]</td>
 				</tr>
 				";
 			}
