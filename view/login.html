@@ -12,10 +12,10 @@
 </div>
 <div>
 	<label for="pas">Password</label>
-	<input type="text" id="pas" name="pas" placeholder="Masukkan password"/>
+	<input type="password" id="pas" name="pas" placeholder="Masukkan password"/>
 </div>
 <div>
-	<button id="btn-submit" name="btn-submit">Login</button>
+	<button id="btn-submit" class="ui-button" name="btn-submit">Login</button>
 </div>
 
 </center>
@@ -28,19 +28,23 @@ $(document).ready(function(){
 		var usr=$('#usr').val();
 		var pas=$('#pas').val();
 		
-		var data={'login':1,'pas':pas,'usr':usr};
-		$.ajax({
-			type:'POST',
-			data:data,
-			url:'ctrl/auth.php',
-			success:function(e){
-				console.log('sukses. '+e);
-				window.location.href='?';
-			},
-			error:function(){
-				console.log('gagal.');
-			}
-		});
+		if(usr!='' && pas!=''){
+			var data={'login':1,'pas':pas,'usr':usr};
+			$.ajax({
+				type:'POST',
+				data:data,
+				url:'ctrl/auth.php',
+				success:function(e){
+					console.log('sukses. '+e);
+					window.location.href='?';
+				},
+				error:function(){
+					console.log('gagal.');
+				}
+			});
+		}else{
+			alert('Lengkapi login form !');
+		}
 	});
 });
 </script>

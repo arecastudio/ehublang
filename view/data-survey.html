@@ -8,3 +8,64 @@ Data (draft) Calon Pelanggan Baru
 <br/>
 <small>Sumber Data bagian Perencanaan dalam melakukan Survey</small>
 <hr/>
+
+<div>
+	<input type="checkbox" name="chk-tgl" id="chk-tgl" />&nbsp;
+	<label for="tgl-awal">Tgl Input</label>
+	<input type="text" id="tgl-awal" name="tgl-awal" class="tgl-input" readonly/> s/d
+	<input type="text" id="tgl-akhir" name="tgl-akhir" class="tgl-input" readonly/>
+</div>
+<div>
+	<input type="checkbox" name="chk-upp" id="chk-upp" />&nbsp;
+	<label for="upp">Cabang</label>
+	<select id="upp" name="upp"></select>
+</div>
+
+<div>
+<button id="btn-submit" name="btn-submit" class="ui-button">Tampilkan</button>
+</div>
+
+<hr/>
+
+<table class="tablex">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>ID</th>
+			<th>Nama</th>
+			<th>Alamat</th>
+			<th>Tgl. Input</th>
+		</tr>
+	</thead>
+	<tbody id="tbody">
+
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+	</tfoot>
+</table>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	/*console.log('data survey is ready !!!');*/
+	$('.tgl-input').datepicker();
+	$('#upp').load('ctrl/main.php?gif=upp');
+	$('#tbody').load('ctrl/data-survey.php?gif=tabel');
+});
+</script>
+
+
+<style type="text/css">
+.tgl-input{
+	width:100px;
+	text-align:center;
+	font-weight:bold;
+}
+</style>
