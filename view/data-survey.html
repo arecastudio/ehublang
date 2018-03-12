@@ -58,6 +58,26 @@ $(document).ready(function(){
 	$('.tgl-input').datepicker();
 	$('#upp').load('ctrl/main.php?gif=upp');
 	$('#tbody').load('ctrl/data-survey.php?gif=tabel');
+
+	$('#btn-submit').click(function(){
+		/*console.log('berhasil...');*/
+
+		var t1=$('#tgl-awal').val();
+		var t2=$('#tgl-akhir').val();
+		var upp=$('#upp').val();
+
+		var urls='ctrl/data-survey.php?gif=tabel';
+		if($('#chk-tgl').is(':checked')){
+			urls+='&t1='+t1+'&t2='+t2;
+		}
+		if($('#chk-upp').is(':checked')){
+			urls+="&upp="+upp;
+		}
+		console.log('url: '+urls);
+		$('#tbody').load(urls);
+
+	});
+
 });
 </script>
 

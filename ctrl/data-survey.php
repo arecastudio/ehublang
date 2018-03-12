@@ -3,10 +3,20 @@ require_once('Connection.php');
 $connection=new Connection();
 $con=$connection->con;
 
+
+/* JANGAN LUPA LENGKAPI DENGAN STRING ESCAPE UNTUK MENGHINDARI SQL INJECTION */
 if(isset($_GET['gif']) && $_GET['gif']!=''){
 	switch ($_GET['gif']){
 		case 'tabel':
-		$sql="SELECT ID,no_ktp,nama_2,alamat_2,tgl_input FROM pelanggan_reg";
+		$where="1";
+		if(isset($_GET['t1']) && isset($_GET['t2']) ){
+			$where="(tgl_input between '".$_GET['t1']."' AND '".$_GET['t2']."')";
+		}elseif(isset($_GET['upp'])){
+			$where="upp='".$_GET['upp']."'";
+		}elseif(isset($_GET['t1']) && isset($_GET['t2']) && isset($_GET['upp']) ){
+			$where="upp='".$_GET['upp']."' AND (tgl_input BETWEEN '".$_GET['t1']."' AND '".$_GET['t2']."')";
+		}
+		$sql="SELECT ID,no_ktp,nama_2,alamat_2,tgl_input FROM pelanggan_reg WHERE $where;";
 		$rs=$con->query($sql);
 		if($rs){
 			$i=0;
