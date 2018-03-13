@@ -1,3 +1,13 @@
+<style type="text/css">
+#map {
+	height:250px;
+	width: 100%;
+	float: left;
+	color: black;
+	margin-bottom:5px;
+}
+</style>
+
 <div class="path">
 Home / Berkas / Data Survey
 </div>
@@ -9,7 +19,7 @@ Data (draft) Calon Pelanggan Baru
 <small>Sumber Data bagian Perencanaan dalam melakukan Survey</small>
 <hr/>
 <div style="overflow:auto;margin-bottom:5px;">
-<div id="form-kiri" style="border:1px solid #ccc;border-radius:5px;width:450px;padding:5px;float:left;margin-right:5px;">
+<div id="form-kiri" style="border:1px solid #ccc;border-radius:5px;width:450px;padding:5px;float:left;margin-right:5px;margin-bottom:5px;">
 <div>
 	<input type="checkbox" name="chk-tgl" id="chk-tgl" />&nbsp;
 	<label for="tgl-awal">Tgl Input</label>
@@ -28,8 +38,9 @@ Data (draft) Calon Pelanggan Baru
 
 </div>
 
-<div id="form-kanan" style="border:1px solid #ccc;border-radius:5px;width:450px;padding:5px;float:left;">
-	<img src="static/icon/favicon.png" style="width:200px;" />
+<div id="form-kanan" style="border:1px solid #ccc;border-radius:5px;width:450px;padding:5px;float:left;text-align:center;">
+	<!--img src="static/icon/favicon.png" style="width:200px;" /-->
+	<div id="map"></div>
 </div>
 
 </div>
@@ -98,3 +109,100 @@ $(document).ready(function(){
 	font-weight:bold;
 }
 </style>
+
+
+
+<script type="text/javascript">
+
+function initMap() {
+
+	var map;
+      	var markers = [];
+
+
+        var jayapura = {lat: -2.5916, lng: 140.6690};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: jayapura
+        });
+        /*var marker = new google.maps.Marker({
+          position: jayapura,
+          map: map
+        });*/
+        map.setMapTypeId('satellite');
+
+
+
+	google.maps.event.addListener(map, "click", function(event) {
+    // get lat/lon of click
+    var clickLat = event.latLng.lat();
+    var clickLon = event.latLng.lng();
+
+    // show in input box
+    var result='{ Lat: '+clickLat.toFixed(5)+', Lon: '+clickLon.toFixed(5)+' }';
+    console.log(result);
+    //window.alert(result);
+    //document.getElementById('hasil').innerHTML=result;
+    document.getElementById('lok-rmh').value=result;
+    document.getElementById('tx-pos-lon').value=clickLon.toFixed(5);
+    document.getElementById('tx-pos-lat').value=clickLat.toFixed(5);
+    //document.getElementById("lon").value = clickLon.toFixed(5);
+/*
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(clickLat,clickLon),
+      map: map
+    });
+		markers.push(marker);*/
+    clearMarkers();
+    deleteMarkers();
+    addMarker(event.latLng);
+
+
+  });
+
+
+// Adds a marker to the map and push to the array.
+      function addMarker(location) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          mapTypeId: 'satellite'
+        });
+        markers.push(marker);
+      }
+
+      // Sets the map on all markers in the array.
+      function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+
+      // Removes the markers from the map, but keeps them in the array.
+      function clearMarkers() {
+        setMapOnAll(null);
+      }
+
+      // Shows any markers currently in the array.
+      function showMarkers() {
+        setMapOnAll(map);
+      }
+
+      // Deletes all markers in the array by removing references to them.
+      function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+      }
+
+initMap.clearMarkers=clearMarkers;
+initMap.deleteMarkers=deleteMarkers;
+
+}
+
+
+</script>
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbKSZYsGryBrvYDGHN55xEOtXpWqE6WIQ&callback=initMap">
+</script>
