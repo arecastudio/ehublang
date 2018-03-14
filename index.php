@@ -14,8 +14,10 @@ require_once('ctrl/Connection.php');
 
     <script type="text/javascript" src="static/jquery.js"></script>
     
+
     <!-- jquery-ui -->
     <script type="text/javascript" src="static/jquery-ui.js"></script>
+
     <link href="static/jquery-ui.css" rel="stylesheet">
 
     <!-- jquery-dataTables -->
@@ -129,7 +131,7 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 
 
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
 	$('#logout').click(function(e){
 		$.ajax({
@@ -146,3 +148,4 @@ $(document).ready(function(){
 
 
 </html>
+<script type="text/javascript" src="static/main.js"></script>
