@@ -21,7 +21,8 @@ echo"
 	<td>$row[1]</td>
 	<td class=\"tengah\">$row[2]</td>
 	<td class=\"tengah\">$row[3]</td>
-	<td>&nbsp;</td>
+	<td class=\"tengah\"><a href=\"#\"><img src=\"static/icon/sampah.png\" class=\"icon-sm\"/></a></td>
+	<td class=\"tengah\"><a href=\"#\"><img src=\"static/icon/pensil.png\" class=\"icon-sm\"/></a></td>
 </tr>
 ";
 				}

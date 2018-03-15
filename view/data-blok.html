@@ -50,7 +50,7 @@ Data Perubahan/ Penambahan Blok
 				<th>Keterangan</th>
 				<th>UPP</th>
 				<th>Wilayah</th>
-				<th>DEL</th>
+				<th colspan="2">Mod</th>
 			</tr>
 		</thead>
 		<tbody id="tbody"></tbody>
@@ -63,14 +63,17 @@ Data Perubahan/ Penambahan Blok
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#tbody').load('ctrl/data-blok.php?gif=tabel');
-	$('#kode_cabang').load('ctrl/main.php?gif=upp');
-	$('#kode_wilayah').load('ctrl/main.php?gif=wil');
 
 	$('#btn-reset').click(function(){
 		$('#kode_blok').val('');
 		$('#kode_blok')[0].focus();
 		$('#ket_blok').val('');
+
+		$('#tbody').load('ctrl/data-blok.php?gif=tabel');
+		$('#kode_cabang').load('ctrl/main.php?gif=upp');
+		$('#kode_wilayah').load('ctrl/main.php?gif=wil');
 	});
+
+	$('#btn-reset').trigger('click');
 });
 </script>
