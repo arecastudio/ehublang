@@ -76,7 +76,7 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 		</a>
 
 
-		<a href="?p=reg-pelanggan" title="Data Blok" class="sub-side-menu">
+		<a href="?p=data-blok" title="Data Blok" class="sub-side-menu">
 		<div class="menu-md">
 
 			<img class="icon-md" id="ic-reg" src="static/icon/data-blok.png"/>
@@ -108,6 +108,9 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 				break;
 			case 'cetak-pelanggan':
 				require_once('view/cetak-pelanggan.html');
+				break;
+			case 'data-blok':
+				require_once('view/data-blok.html');
 				break;
 			case 'login':
 				//require_once('view/login.html');

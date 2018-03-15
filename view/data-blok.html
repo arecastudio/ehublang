@@ -1,0 +1,76 @@
+<div class="path">
+Home / Berkas / Data Blok
+</div>
+
+<strong>
+Data Perubahan/ Penambahan Blok
+</strong>
+<hr/>
+<!-- ############################################################ -->
+<div style="ovelflow:auto;margin-bottom:5px;border:1px solid #ccc;border-radius:5px;width:400px;padding:10px;">
+
+<div>
+<label for="kode_blok">Kode</label>
+<input type="text" id="kode_blok" name="kode_blok" placeholder="Masukkan kode blok"/>
+</div>
+
+
+<div>
+<label for="ket_blok">Keterangan</label>
+<textarea id="ket_blok" name="ket_blok" style="width:100%;" placeholder="Masukkan keterangan blok"></textarea>
+</div>
+
+
+<div>
+<label for="kode_cabang">UPP</label>
+<select name="kode_cabang" id="kode_cabang"></select>
+</div>
+
+
+<div>
+<label for="kode_wilayah">Wilayah</label>
+<select name="kode_wilayah" id="kode_wilayah"></select>
+</div>
+
+<div style="margin-top:20px;">
+<button id="btn-sumbit" class="ui-button" style="float:right;">Simpan</button>
+<button id="btn-reset" class="ui-button">Reset</button>
+</div>
+
+</div>
+<!-- ############################################################ -->
+<hr/>
+
+<div style="">
+	<table class="tablex">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Blok</th>
+				<th>Keterangan</th>
+				<th>UPP</th>
+				<th>Wilayah</th>
+				<th>DEL</th>
+			</tr>
+		</thead>
+		<tbody id="tbody"></tbody>
+		<tfoot></tfoot>
+	</table>
+	<button id="export" class="ui-button">Export ke Excel</button>
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#tbody').load('ctrl/data-blok.php?gif=tabel');
+	$('#kode_cabang').load('ctrl/main.php?gif=upp');
+	$('#kode_wilayah').load('ctrl/main.php?gif=wil');
+
+	$('#btn-reset').click(function(){
+		$('#kode_blok').val('');
+		$('#kode_blok')[0].focus();
+		$('#ket_blok').val('');
+	});
+});
+</script>

@@ -17,6 +17,15 @@ if(isset($_GET['gif'])){
 			}
 			$rs->close();
 			break;
+		case 'wil':
+			$rs=$con->query("SELECT kode_wilayah,nama_wilayah FROM wilayah WHERE 1 ORDER BY kode_wilayah ASC;");
+			if($rs){
+				while($row=$rs->fetch_row()){
+					echo"<option value=\"$row[0]\"> $row[0] - $row[1]</option>";
+				}
+			}
+			$rs->close();
+			break;
 		case 'kecamatan':
 			$rs=$con->query("SELECT IDKecamatan,Nama FROM kecamatan WHERE 1 ORDER BY Nama ASC;");
 			if($rs){
