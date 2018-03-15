@@ -23,17 +23,18 @@ Data (draft) Calon Pelanggan Baru
 <div>
 	<input type="checkbox" name="chk-tgl" id="chk-tgl" />&nbsp;
 	<label for="tgl-awal">Tgl Input</label>
-	<input type="text" id="tgl-awal" name="tgl-awal" class="tgl-input" readonly/> s/d
-	<input type="text" id="tgl-akhir" name="tgl-akhir" class="tgl-input" readonly/>
+	<input type="text" id="tgl-awal" name="tgl-awal" class="tanggal" readonly/> s/d
+	<input type="text" id="tgl-akhir" name="tgl-akhir" class="tanggal" readonly/>
 </div>
 <div>
 	<input type="checkbox" name="chk-upp" id="chk-upp" />&nbsp;
 	<label for="upp">Cabang</label>
 	<select id="upp" name="upp"></select>
 </div>
-
-<div>
-<button id="btn-submit" name="btn-submit" class="ui-button">Tampilkan</button>
+<hr/>
+<div style="margin-top:20px;">
+<button id="btn-submit" name="btn-submit" class="ui-button" style="float:right;">Tampilkan</button>
+<button id="btn-reset" name="btn-reset" class="ui-button">Reset</button>
 </div>
 
 </div>
@@ -47,7 +48,7 @@ Data (draft) Calon Pelanggan Baru
 
 <hr/>
 
-<table class="tablex">
+<table class="tablex" id="tabel">
 	<thead>
 		<tr>
 			<th>#</th>
@@ -63,17 +64,28 @@ Data (draft) Calon Pelanggan Baru
 			<td colspan="5">&nbsp;</td>
 		</tr>
 	</tbody>
-	<tfoot>
+	<tfoot class="noExl">
 		<tr>
 			<td colspan="5"><small>Tabel ini secara otomatis menampilkan calon pelanggan yang sedang di-input untuk bulan ini.</small></td>
 		</tr>
 	</tfoot>
 </table>
-
+<button id="btn-export" class="ui-button">Export</button>
 
 
 <script type="text/javascript">
 $(document).ready(function(){
+	$('#btn-export').click(function(){
+		$("#tabel").table2excel({
+		    // exclude CSS class
+		    exclude: ".noExl",
+		    name: "Sheet1",
+		    filename: "SomeFile", //do not include extension
+			fileext:'xlsx'
+		  }); 
+	});
+
+
 	/*console.log('data survey is ready !!!');*/
 	$('.tgl-input').datepicker();
 	$('#upp').load('ctrl/main.php?gif=upp');
@@ -103,11 +115,6 @@ $(document).ready(function(){
 
 
 <style type="text/css">
-.tgl-input{
-	width:100px;
-	text-align:center;
-	font-weight:bold;
-}
 </style>
 
 

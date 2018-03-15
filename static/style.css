@@ -11,6 +11,11 @@ hr{
 	overflow:auto;
 }
 
+.tanggal{
+	width:100px;
+	text-align:center;
+	font-weight:bold;
+}
 
 #footer{
 	text-align:center;

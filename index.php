@@ -13,6 +13,9 @@ require_once('ctrl/Connection.php');
     <title>E-Hublang - PDAM Jayapura</title>
 
     <script type="text/javascript" src="static/jquery.js"></script>
+<!-- jquery harus ditaruh paling atas sebelum file turunannya agar dapat bekerja ketika halaman diload. -->
+    <script type="text/javascript" src="static/default.js"></script>
+    <script type="text/javascript" src="static/jquery.table2excel.js"></script>
     
 
     <!-- jquery-ui -->
@@ -29,6 +32,7 @@ require_once('ctrl/Connection.php');
 <!-- GOOGLE MAP API KEY
  AIzaSyDbKSZYsGryBrvYDGHN55xEOtXpWqE6WIQ
 -->
+
   </head>
 <body>
 <?php
