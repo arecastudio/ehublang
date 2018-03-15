@@ -10,7 +10,7 @@ require_once('ctrl/Connection.php');
     <meta name="author" content="">
     <link rel="icon" href="static/icon/favicon.png">
 
-    <title>E-Hublang - PDAM Jayapura</title>
+    <title>E-Customer - PDAM Jayapura</title>
 
     <script type="text/javascript" src="static/jquery.js"></script>
 <!-- jquery harus ditaruh paling atas sebelum file turunannya agar dapat bekerja ketika halaman diload. -->
