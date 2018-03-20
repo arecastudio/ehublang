@@ -39,3 +39,24 @@ class Connection{
 	}
 
 }
+
+
+
+
+function getKecamatan($cn,$id){
+	$rslt='';
+	$rs=$cn->query("SELECT Nama FROM kecamatan WHERE IDKecamatan=$id LIMIT 1;");
+	if($rs){
+		if( $rw=$rs->fetch_row() ) $rslt=$rw[0];
+	}
+	return $rslt;
+}
+
+function getKelurahan($cn,$id){
+	$rslt='';
+	$rs=$cn->query("SELECT Nama FROM kelurahan WHERE IDKelurahan=$id LIMIT 1;");
+	if($rs){
+		if( $rw=$rs->fetch_row() ) $rslt=$rw[0];
+	}
+	return $rslt;
+}
