@@ -66,6 +66,15 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 		</div>
 		</a>
 
+		<a href="?p=data-verify" title="Verifikasi Registrasi" class="sub-side-menu">
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/verify.png"/>
+			<br/>
+			<small>Verifikasi</small>
+		</div>
+		</a>
+
 		<a href="?p=data-survey" title="Data Survey" class="sub-side-menu">
 		<div class="menu-md">
 
@@ -105,6 +114,9 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 				break;
 			case 'data-survey':
 				require_once('view/data-survey.html');
+				break;
+			case 'data-verify':
+				require_once('view/data-verify.html');
 				break;
 			case 'cetak-pelanggan':
 				require_once('view/cetak-pelanggan.html');

@@ -12,6 +12,7 @@ Data Perubahan/ Penambahan Blok
 <div>
 <label for="kode_blok">Kode</label>
 <input type="text" id="kode_blok" name="kode_blok" placeholder="Masukkan kode blok"/>
+<input type="hidden" id="hidden_kode_blok" name="hidden_kode_blok" />
 </div>
 
 
@@ -65,6 +66,7 @@ Data Perubahan/ Penambahan Blok
 $(document).ready(function(){
 
 	$('#btn-reset').click(function(){
+		$('#hidden_kode_blok').val('');
 		$('#kode_blok').val('');
 		$('#kode_blok')[0].focus();
 		$('#ket_blok').val('');

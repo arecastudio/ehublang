@@ -1,0 +1,50 @@
+<div class="path">
+Home / Berkas / Verifikasi
+</div>
+
+<strong>
+Verifikasi Data Registrasi Calon Pelanggan
+</strong>
+<br id="baris"/>
+<small>Cek Kelayakan sebelum di-post ke Perencanaan</small>
+<hr/>
+
+
+<table class="tablex" style="font-size:10px;">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Nama</th>
+			<th>Alamat</th>
+			<th>RT</th>
+			<th>RW</th>
+			<th>Kecamatan</th>
+			<th>Kelurahan</th>
+			<th>UPP</th>
+			<th>No. HP</th>
+			<th>Luas</th>
+			<th>Jenis Bgn</th>
+			<th>Penghuni</th>
+			<th>Stat Rumah</th>
+			<th>Peruntukan</th>
+			<th>Sumber Air</th>
+			<th>Tgl Input</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody id="tbody"></tbody>
+	<tfoot></tfoot>
+</table>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#baris').click(function(){
+		$('#tbody').load('ctrl/data-verify.php?gif=tabel');
+	});
+	
+	$('#baris').trigger('click');
+});
+</script>

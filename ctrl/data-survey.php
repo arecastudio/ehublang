@@ -16,6 +16,11 @@ if(isset($_GET['gif']) && $_GET['gif']!=''){
 		}elseif(isset($_GET['t1']) && isset($_GET['t2']) && isset($_GET['upp']) ){
 			$where="upp='".$_GET['upp']."' AND (DATE(tgl_input) BETWEEN '".$_GET['t1']."' AND '".$_GET['t2']."')";
 		}
+		if($where!='1'){
+			$where.=" AND status=1";
+		}else{
+			$where="status=1";
+		}
 		$sql="SELECT ID,no_ktp,nama_2,alamat_2,tgl_input,pos_lat,pos_lon FROM pelanggan_reg WHERE $where;";
 		$rs=$con->query($sql);
 		if($rs){
