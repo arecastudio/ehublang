@@ -10,8 +10,9 @@ if(isset($_GET['gif']) && $_GET['gif']!=''){
 	switch($_GET['gif']){
 		case 'tabel':
 $sql="
-SELECT ID, no_ktp, nama_1, alamat_1, rt_1, rw_1, kecamatan_1, kelurahan_1, nama_2, alamat_2, rt_2, rw_2, kecamatan_2, kelurahan_2, no_spl, upp, no_hp, pekerjaan, pos_lat, pos_lon, luas, jns_bangunan, jml_penghuni, stat_rmh, peruntukan, sumber_air, tgl_input, status
+SELECT ID, no_ktp, nama_1, alamat_1, rt_1, rw_1, kecamatan_1, kelurahan_1, nama_2, alamat_2, rt_2, rw_2, kecamatan_2, kelurahan_2, no_spl, u.code, no_hp, pekerjaan, pos_lat, pos_lon, luas, jns_bangunan, jml_penghuni, stat_rmh, peruntukan, sumber_air, tgl_input, status
 FROM pelanggan_reg
+LEFT OUTER JOIN (SELECT * FROM upp)AS u ON u.cabang=pelanggan_reg.upp
 WHERE 1
 ORDER BY ID ASC
 ;";
@@ -29,7 +30,8 @@ ORDER BY ID ASC
 					<td><span id=\"rw-$row[0]\">$row[11]</span></td>
 					<td><span id=\"rw-$row[0]\">".getKecamatan($con,$row[12])."</span></td>
 					<td><span id=\"rw-$row[0]\">".getKelurahan($con,$row[13])."</span></td>
-					<td colspan=\"10\">$i</td>
+					<td><span id=\"rw-$row[0]\">$row[15]</span></td>
+					<td colspan=\"9\">$i</td>
 				</tr>
 				";
 				}
