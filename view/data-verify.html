@@ -23,28 +23,145 @@ Verifikasi Data Registrasi Calon Pelanggan
 			<th>UPP</th>
 			<th>No. HP</th>
 			<th>Luas</th>
-			<th>Jenis Bgn</th>
-			<th>Penghuni</th>
-			<th>Stat Rumah</th>
-			<th>Peruntukan</th>
-			<th>Sumber Air</th>
 			<th>Tgl Input</th>
 			<th>Status</th>
 		</tr>
 	</thead>
 	<tbody id="tbody"></tbody>
-	<tfoot></tfoot>
+	<tfoot><tr><td colspan="17">Klik pada salah satu data untuk melakukan verifikasi.</td></tr></tfoot>
 </table>
 
+<div id="dialog-form" title="Verifikasi Data">
+<form>
+
+<div>
+<label for="tx-nama">Nama</label>
+<input type="text" id="tx-nama" name="tx-nama" placeholder="Nama dalam rekening" class="isian" />
+</div>
+
+<div>
+<label for="tx-alamat">Alamat</label>
+<textarea id="tx-alamat" name="tx-alamat" style="width:98%;height:35px;"></textarea>
+</div>
+
+<div>
+<label for="tx-rt">RT/RW</label>
+<input type="text" id="tx-rt" name="tx-rt" style="width:50px;"/>&nbsp;/&nbsp;
+<input type="text" id="tx-rw" name="tx-rw" style="width:50px;"/>
+</div>
+
+<div>
+<label for="opt-kecamatan">Kecamatan</label>
+<select id="opt-kecamatan" name="opt-kecamatan" class="isian"></select>
+</div>
+
+<div>
+<label for="opt-kelurahan">Kelurahan</label>
+<select id="opt-kelurahan" name="opt-kelurahan" class="isian"></select>
+</div>
+
+<div>
+<label for="tx-spl">No. SPL</label>
+<input type="text" id="tx-spl" name="tx-spl" class="isian" placeholder="Nomor Register" />
+</div>
+
+<div>
+	<label for="opt-upp">Area Service</label>
+	<select id="opt-upp" name="opt-upp" class="isian"></select>
+</div>
+
+<div>
+<label for="tx-hp">No. HP</label>
+<input type="text" id="tx-hp" name="tx-hp" class="isian" placeholder="Nomor handphone pelanggan untuk info survey dan biaya penerbitan" />
+</div>
+
+<div>
+<label for="tx-job">Pekerjaan</label>
+<input type="text" id="tx-job" name="tx-job" class="isian"/>
+</div>
 
 
+<div>
+<label for="tx-luas">Luas (M<sup>2</sup>)</label>
+<input type="text" id="tx-luas" name="tx-luas" class="isian" placeholder="Luas tanah dan bangunan" />
+</div>
+
+<div>
+	<label for="opt-jnsbgn">Jenis Bgn</label>
+	<select id="opt-jnsbgn" name="opt-jnsbgn" class="isian"></select>
+</div>
+
+<div>
+<label for="tx-jmlhuni">Jml Penghuni</label>
+<input type="text" id="tx-jmlhuni" name="tx-jmlhuni" class="isian" placeholder="Jumlah penghuni rumah" />
+</div>
+
+<div>
+	<label for="opt-statrmh">Status Rmh</label>
+	<select id="opt-statrmh" name="opt-statrmh" class="isian"></select>
+</div>
+
+<div>
+	<label for="opt-perun">Peruntukan</label>
+	<select id="opt-perun" name="opt-perun" class="isian"></select>
+</div>
+
+<div>
+	<label for="opt-airalt">Sumber Air</label>
+	<select id="opt-airalt" name="opt-airalt" class="isian"></select>
+</div>
+
+
+<div>
+	<label for="opt-verifystat">Status</label>
+	<select id="opt-verifystat" name="opt-verifystat" class="isian"></select>
+</div>
+
+</form>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#baris').click(function(){
 		$('#tbody').load('ctrl/data-verify.php?gif=tabel');
+		$('#opt-upp').load('ctrl/main.php?gif=upp');
+		$('#opt-kecamatan').load('ctrl/main.php?gif=kecamatan');
+		$('#opt-kelurahan').load('ctrl/main.php?gif=kelurahan');
+		$('#opt-statrmh').load('ctrl/main.php?gif=statrmh');
+		$('#opt-jnsbgn').load('ctrl/main.php?gif=jnsbgn');
+		$('#opt-perun').load('ctrl/main.php?gif=perun');
+		$('#opt-airalt').load('ctrl/main.php?gif=airalt');
+		$('#opt-verifystat').load('ctrl/main.php?gif=verifystat');
 	});
 	
 	$('#baris').trigger('click');
+
+	var dialog=$('#dialog-form').dialog({
+		autoOpen:false,
+		height:620,
+		width:400,
+		modal:true,
+		buttons:{
+			'Simpan perubahan':function(){
+				console.log('Simpan perubahan.');
+			},
+			Close:function(){
+				dialog.dialog('close');
+			}
+		}
+	});
+
+	$('#tbody').delegate('.selected-verify-row','click',function(){
+		var id=$(this).attr('id');
+		$('#tx-nama').val($(this).attr('nama'));
+		$('#tx-alamat').val($(this).attr('alamat'));
+		$('#tx-rt').val($(this).attr('rt'));
+		$('#tx-rw').val($(this).attr('rw'));
+		$('#opt-kecamatan').val($(this).attr('kecamatan'));
+		$('#opt-kelurahan').val($(this).attr('kelurahan'));
+		$('#opt-upp').val($(this).attr('upp'));
+		dialog.dialog('open');
+	});
+
 });
 </script>

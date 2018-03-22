@@ -35,6 +35,7 @@ require_once('ctrl/Connection.php');
 
   </head>
 <body>
+
 <?php
 if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 ?>

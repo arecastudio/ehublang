@@ -69,6 +69,10 @@ if(isset($_GET['gif'])){
 			echo "<option value=\"3\">Sungai</option>";
 			echo "<option value=\"0\">Lainnya</option>";
 			break;
+		case 'verifystat':
+			echo "<option value=\"0\">Belum/Tidak Terverifikasi</option>";
+			echo "<option value=\"1\">Terverifikasi/Sesuai data lapangan</option>";
+			break;
 		default:
 			//
 			echo"Test test test test....";
