@@ -65,6 +65,11 @@ verifystat=\"$row[29]\"
 }
 
 
+if(isset($_POST['idx']) && $_POST['idx']!=''){
+	//
+}
+
+
 
 
 

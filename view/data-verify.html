@@ -37,6 +37,7 @@ Verifikasi Data Registrasi Calon Pelanggan
 <div>
 <label for="tx-nama">Nama</label>
 <input type="text" id="tx-nama" name="tx-nama" placeholder="Nama dalam rekening" class="isian" />
+<input type="hidden" name="tx-id" id="tx-id" />
 </div>
 
 <div>
@@ -135,6 +136,41 @@ $(document).ready(function(){
 	});
 	
 	$('#baris').trigger('click');
+
+	function simpan(){
+		var data={
+			'idx':1,
+			'id':$('#tx-id').val(),
+			'nama':$('#tx-nama').val(),
+			'alamat':$('#tx-alamat').val(),
+			'rt':$('#tx-rt').val(),
+			'rw':$('#tx-rw').val(),
+			'kecamatan':$('#opt-kecamatan').val(),
+			'kelurahan':$('#opt-kelurahan').val(),
+			'upp':$('#opt-upp').val(),
+			'spl':$('#tx-spl').val(),
+			'hp':$('#tx-hp').val(),
+			'job':$('#tx-job').val(),
+			'luas':$('#tx-luas').val(),
+			'jnsbgn':$('#opt-jnsbgn').val(),
+			'jmlhuni':$('#tx-jmlhuni').val(),
+			'statrmh':$('#opt-statrmh').val(),
+			'perum':$('#opt-perun').val(),
+			'airalt':$('#opt-airalt').val(),
+			'verifystat':$('#opt-verifystat').val()
+		};
+		$.ajax({
+			type:'POST',
+			url:'ctrl/data-verify.php',
+			data:data,
+			success:function(e){
+				console.log('berhasil simpan data. '+e);
+			},
+			error:function(){
+				console.log('gagal simpan data.');
+			}
+		});
+	}
 
 	var dialog=$('#dialog-form').dialog({
 		autoOpen:false,

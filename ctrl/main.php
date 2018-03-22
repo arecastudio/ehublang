@@ -52,7 +52,7 @@ if(isset($_GET['gif'])){
 			break;
 		case 'jnsbgn':
 			echo "<option value=\"1\">Bersertifikat</option>";
-			echo "<option value=\"2\">Tidak Berseftifikat</option>";
+			echo "<option value=\"2\">Tidak Bersertifikat</option>";
 			break;
 		case 'perun':
 			echo "<option value=\"1\">Rumah Tinggal</option>";
