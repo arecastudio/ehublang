@@ -26,6 +26,7 @@ ORDER BY ID ASC
 					<td>$i</td>
 					<td><a href=\"#\" id=\"nama-$row[0]\" 
 class=\"selected-verify-row\" 
+idx=\"$row[0]\" 
 nama=\"$row[8]\" 
 alamat=\"$row[9]\"
 rt=\"$row[10]\"
@@ -66,7 +67,55 @@ verifystat=\"$row[29]\"
 
 
 if(isset($_POST['idx']) && $_POST['idx']!=''){
-	//
+	$id=$_POST['id'];
+	$nama=$_POST['nama'];
+	$alamat=$_POST['alamat'];
+	$rt=$_POST['rt'];
+	$rw=$_POST['rw'];
+	$kecamatan=$_POST['kecamatan'];
+	$kelurahan=$_POST['kelurahan'];
+	$upp=$_POST['upp'];
+	$spl=$_POST['spl'];
+	$hp=$_POST['hp'];
+	$job=$_POST['job'];
+	$luas=$_POST['luas'];
+	$jnsbgn=$_POST['jnsbgn'];
+	$jmlhuni=$_POST['jmlhuni'];
+	$statrmh=$_POST['statrmh'];
+	$perum=$_POST['perum'];
+	$airalt=$_POST['airalt'];
+	$verifystat=$_POST['verifystat'];
+
+	$sql="
+	UPDATE pelanggan_reg
+	SET
+		nama_2='$nama',
+		alamat_2='$alamat',
+		rt_2='$rt',
+		rw_2='$rw',
+		kecamatan_2='$kecamatan',
+		kelurahan_2='$kelurahan',
+		upp='$upp',
+		no_spl='$spl',
+		no_hp='$hp',
+		pekerjaan='$job',
+		luas=$luas,
+		jns_bangunan='$jnsbgn',
+		jml_penghuni=$jmlhuni,
+		stat_rmh='$statrmh',
+		peruntukan='$perun',
+		sumber_air='$airalt',
+		status='$verifystat'
+	WHERE
+		ID=$id
+	;";
+
+	$rs=$con->query($sql);
+	if($rs){
+		echo "Proses update informasi calon pelanggan Berhasil!";
+	}else{
+		echo "Proses update informasil calon pelanggan Gagal! ".$con->error."\n $sql";
+	}
 }
 
 

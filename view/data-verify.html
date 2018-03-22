@@ -31,8 +31,8 @@ Verifikasi Data Registrasi Calon Pelanggan
 	<tfoot><tr><td colspan="17">Klik pada salah satu data untuk melakukan verifikasi.</td></tr></tfoot>
 </table>
 
-<div id="dialog-form" title="Verifikasi Data" style="background-color:#eef;">
-<form>
+<div id="dialog-form" title="Verifikasi Data" style="background:linear-gradient(#ddd,#eee);">
+<form id="form">
 
 <div>
 <label for="tx-nama">Nama</label>
@@ -133,6 +133,7 @@ $(document).ready(function(){
 		$('#opt-perun').load('ctrl/main.php?gif=perun');
 		$('#opt-airalt').load('ctrl/main.php?gif=airalt');
 		$('#opt-verifystat').load('ctrl/main.php?gif=verifystat');
+		$('#form')[0].reset();
 	});
 	
 	$('#baris').trigger('click');
@@ -155,7 +156,7 @@ $(document).ready(function(){
 			'jnsbgn':$('#opt-jnsbgn').val(),
 			'jmlhuni':$('#tx-jmlhuni').val(),
 			'statrmh':$('#opt-statrmh').val(),
-			'perum':$('#opt-perun').val(),
+			'perun':$('#opt-perun').val(),
 			'airalt':$('#opt-airalt').val(),
 			'verifystat':$('#opt-verifystat').val()
 		};
@@ -164,7 +165,9 @@ $(document).ready(function(){
 			url:'ctrl/data-verify.php',
 			data:data,
 			success:function(e){
-				console.log('berhasil simpan data. '+e);
+				console.log('Server Log: '+e);
+				$('#baris').trigger('click');
+				$('#dialog-form').dialog('close');
 			},
 			error:function(){
 				console.log('gagal simpan data.');
@@ -179,7 +182,8 @@ $(document).ready(function(){
 		modal:true,
 		buttons:{
 			'Simpan perubahan':function(){
-				console.log('Simpan perubahan.');
+				//console.log('Simpan perubahan.');
+				simpan();
 			},
 			Close:function(){
 				dialog.dialog('close');
@@ -189,6 +193,7 @@ $(document).ready(function(){
 
 	$('#tbody').delegate('.selected-verify-row','click',function(){
 		var id=$(this).attr('id');
+		$('#tx-id').val($(this).attr('idx'));
 		$('#tx-nama').val($(this).attr('nama'));
 		$('#tx-alamat').val($(this).attr('alamat'));
 		$('#tx-rt').val($(this).attr('rt'));
