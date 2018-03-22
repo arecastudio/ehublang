@@ -10,7 +10,7 @@ Verifikasi Data Registrasi Calon Pelanggan
 <hr/>
 
 
-<table class="tablex" style="font-size:10px;">
+<table class="tablex" style="">
 	<thead>
 		<tr>
 			<th>#</th>
@@ -31,7 +31,7 @@ Verifikasi Data Registrasi Calon Pelanggan
 	<tfoot><tr><td colspan="17">Klik pada salah satu data untuk melakukan verifikasi.</td></tr></tfoot>
 </table>
 
-<div id="dialog-form" title="Verifikasi Data">
+<div id="dialog-form" title="Verifikasi Data" style="background-color:#eef;">
 <form>
 
 <div>
@@ -160,6 +160,11 @@ $(document).ready(function(){
 		$('#opt-kecamatan').val($(this).attr('kecamatan'));
 		$('#opt-kelurahan').val($(this).attr('kelurahan'));
 		$('#opt-upp').val($(this).attr('upp'));
+		$('#tx-spl').val($(this).attr('spl'));
+		$('#tx-hp').val($(this).attr('hp'));
+		$('#tx-job').val($(this).attr('job'));
+		$('#tx-luas').val($(this).attr('luas'));
+		$('#opt-jnsbgn').val($(this).attr('jnsbgn'));
 		dialog.dialog('open');
 	});
 
