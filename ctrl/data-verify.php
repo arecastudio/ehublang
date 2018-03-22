@@ -10,7 +10,7 @@ if(isset($_GET['gif']) && $_GET['gif']!=''){
 	switch($_GET['gif']){
 		case 'tabel':
 $sql="
-SELECT ID, no_ktp, nama_1, alamat_1, rt_1, rw_1, kecamatan_1, kelurahan_1, nama_2, alamat_2, rt_2, rw_2, kecamatan_2, kelurahan_2, no_spl, u.code, no_hp, pekerjaan, pos_lat, pos_lon, luas, jns_bangunan, jml_penghuni, stat_rmh, peruntukan, sumber_air, DATE(tgl_input), IF(status=0,'Unverified','Verified'),upp
+SELECT ID, no_ktp, nama_1, alamat_1, rt_1, rw_1, kecamatan_1, kelurahan_1, nama_2, alamat_2, rt_2, rw_2, kecamatan_2, kelurahan_2, no_spl, u.code, no_hp, pekerjaan, pos_lat, pos_lon, luas, jns_bangunan, jml_penghuni, stat_rmh, peruntukan, sumber_air, DATE(tgl_input), IF(status=0,'Unverified','Verified'),upp,status
 FROM pelanggan_reg
 LEFT OUTER JOIN (SELECT * FROM upp)AS u ON u.cabang=pelanggan_reg.upp
 WHERE 1
@@ -38,6 +38,11 @@ hp=\"$row[16]\"
 job=\"$row[17]\"
 luas=\"$row[20]\"
 jnsbgn=\"$row[21]\"
+jmlhuni=\"$row[22]\"
+statrmh=\"$row[23]\"
+perun=\"$row[24]\"
+airalt=\"$row[25]\"
+verifystat=\"$row[29]\"
 
 >$row[8]</a></td>
 					<td><span id=\"alamat-$row[0]\">$row[9]</span></td>
