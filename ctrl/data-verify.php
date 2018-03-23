@@ -47,14 +47,14 @@ verifystat=\"$row[29]\"
 
 >$row[8]</a></td>
 					<td><span id=\"alamat-$row[0]\">$row[9]</span></td>
-					<td><span id=\"rt-$row[0]\">$row[10]</span></td>
-					<td><span id=\"rw-$row[0]\">$row[11]</span></td>
+					<td class=\"tengah\"><span id=\"rt-$row[0]\">$row[10]</span></td>
+					<td class=\"tengah\"><span id=\"rw-$row[0]\">$row[11]</span></td>
 					<td><span id=\"kec-$row[0]\"><small>".getKecamatan($con,$row[12])."</small></span></td>
 					<td><span id=\"kel-$row[0]\"><small>".getKelurahan($con,$row[13])."</small></span></td>
-					<td><span id=\"upp-$row[0]\"><small>$row[15]</small></span></td>
-					<td><span id=\"hp-$row[0]\"><small>$row[16]</small></span></td>
-					<td><span id=\"luas-$row[0]\">$row[20]</span></td>
-					<td><span id=\"tgl-$row[0]\"><small>$row[26]</small></span></td>
+					<td class=\"tengah\"><span id=\"upp-$row[0]\"><small>$row[15]</small></span></td>
+					<td class=\"tengah\"><span id=\"hp-$row[0]\"><small>$row[16]</small></span></td>
+					<td class=\"kanan\"><span id=\"luas-$row[0]\"><small>$row[20] M<sup>2</sup></small></span></td>
+					<td class=\"tengah\"><span id=\"tgl-$row[0]\"><small>$row[26]</small></span></td>
 					<td><span id=\"stat-$row[0]\">$row[27]</span></td>
 				</tr>
 				";
@@ -82,7 +82,7 @@ if(isset($_POST['idx']) && $_POST['idx']!=''){
 	$jnsbgn=$_POST['jnsbgn'];
 	$jmlhuni=$_POST['jmlhuni'];
 	$statrmh=$_POST['statrmh'];
-	$perum=$_POST['perum'];
+	$perun=$_POST['perun'];
 	$airalt=$_POST['airalt'];
 	$verifystat=$_POST['verifystat'];
 

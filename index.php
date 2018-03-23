@@ -42,9 +42,9 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
     	<div id="head">
 		<ul id="navbar">
 			<li><a href="?"><img src="static/icon/home.png" style="width:15px;"/>&nbsp;Home</a></li>
-			<li><a href="#">Berkas</a></li>
-			<li><a href="#">Proses</a></li>
-			<li><a href="#">Laporan</a></li>
+			<li><a href="?berkas=">Berkas</a></li>
+			<li><a href="?proses=">Proses</a></li>
+			<li><a href="?laporan=">Laporan</a></li>
 			<li><a href="#">Pengaturan</a></li>
 			<li><a href="#">Manual</a></li>
 			<li style="float:right;"><a href="#" id="logout">Logout&nbsp;<img style="width:15px;" src="static/icon/logout.png"/></a></li>
@@ -57,43 +57,7 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 ?>
 	<div id="sidebar">
-
-		<a href="?p=reg-pelanggan" title="Registrasi pelanggan baru" class="sub-side-menu">
-		<div class="menu-md">
-
-			<img class="icon-md" id="ic-reg" src="static/icon/registrasi.png"/>
-			<br/>
-			<small>Registrasi</small>
-		</div>
-		</a>
-
-		<a href="?p=data-verify" title="Verifikasi Registrasi" class="sub-side-menu">
-		<div class="menu-md">
-
-			<img class="icon-md" id="ic-reg" src="static/icon/verify.png"/>
-			<br/>
-			<small>Verifikasi</small>
-		</div>
-		</a>
-
-		<a href="?p=data-survey" title="Data Survey" class="sub-side-menu">
-		<div class="menu-md">
-
-			<img class="icon-md" id="ic-reg" src="static/icon/data-registrasi.png"/>
-			<br/>
-			<small>Data Survey</small>
-		</div>
-		</a>
-
-
-		<a href="?p=data-blok" title="Data Blok" class="sub-side-menu">
-		<div class="menu-md">
-
-			<img class="icon-md" id="ic-reg" src="static/icon/data-blok.png"/>
-			<br/>
-			<small>Data Blok</small>
-		</div>
-		</a>
+<?php require_once('ctrl/sidebar.php');?>
 
 	</div>
 <?php
@@ -104,20 +68,14 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 
 if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 
-	if(isset($_GET['p']) && $_GET['p']!=''){
-		switch($_GET['p']){
+	if(isset($_GET['berkas']) && $_GET['berkas']!=''){
+		switch($_GET['berkas']){
 			case 'reg-pelanggan':
 				require_once('view/reg-pelanggan.html');
 				break;
 			case 'info-pelanggan':
 				require_once('view/info-pelanggan.html');
 				//echo "halaman info pelanggan";
-				break;
-			case 'data-survey':
-				require_once('view/data-survey.html');
-				break;
-			case 'data-verify':
-				require_once('view/data-verify.html');
 				break;
 			case 'cetak-pelanggan':
 				require_once('view/cetak-pelanggan.html');
@@ -131,6 +89,17 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 			default:
 				echo"<img src=\"static/icon/background-1.png\" />";
 		}
+	}elseif(isset($_GET['proses']) && $_GET['proses']!=''){
+		switch($_GET['proses']){
+			case 'data-survey':
+				require_once('view/data-survey.html');
+				break;
+			case 'data-verify':
+				require_once('view/data-verify.html');
+				break;
+			default:
+		}
+	}elseif(isset($_GET['laporan']) && $_GET['laporan']!=''){
 	}else{
 		echo"<img src=\"static/icon/background-1.png\" />";
 	}
