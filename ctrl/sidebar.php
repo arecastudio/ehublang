@@ -65,6 +65,18 @@ if(isset($_GET['berkas'])){
 		</div>
 		</a>
 <?php
+}elseif(isset($_GET['setting'])){
+?>
+
+		<a href="?setting=users" title="Progress Pekerjaan" class="sub-side-menu">
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/users.png"/>
+			<br/>
+			<small>User</small>
+		</div>
+		</a>
+<?php
 }else{
 ?>
 

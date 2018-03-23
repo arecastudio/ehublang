@@ -45,7 +45,7 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 			<li><a href="?berkas=">Berkas</a></li>
 			<li><a href="?proses=">Proses</a></li>
 			<li><a href="?laporan=">Laporan</a></li>
-			<li><a href="#">Pengaturan</a></li>
+			<li><a href="?setting=">Pengaturan</a></li>
 			<li><a href="#">Manual</a></li>
 			<li style="float:right;"><a href="#" id="logout">Logout&nbsp;<img style="width:15px;" src="static/icon/logout.png"/></a></li>
 		</ul>
@@ -100,8 +100,9 @@ if(isset($_SESSION['user_session_id']) && $_SESSION['user_session_id']!=''){
 			default:
 		}
 	}elseif(isset($_GET['laporan']) && $_GET['laporan']!=''){
+	}elseif(isset($_GET['setting']) && $_GET['setting']!=''){
 	}else{
-		echo"<img src=\"static/icon/background-1.png\" />";
+		echo"<img src=\"static/icon/jayapura-map.png\" style=\"width:100%;\"/>";
 	}
 }else{
 	require_once('view/login.html');
