@@ -68,12 +68,21 @@ if(isset($_GET['berkas'])){
 }elseif(isset($_GET['setting'])){
 ?>
 
-		<a href="?setting=users" title="Progress Pekerjaan" class="sub-side-menu">
+		<a href="?setting=users" title="Pengaturan user" class="sub-side-menu">
 		<div class="menu-md">
 
 			<img class="icon-md" id="ic-reg" src="static/icon/users.png"/>
 			<br/>
 			<small>User</small>
+		</div>
+		</a>
+
+		<a href="?setting=akses" title="Hak akses" class="sub-side-menu">
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/lock.png"/>
+			<br/>
+			<small>Akses</small>
 		</div>
 		</a>
 <?php

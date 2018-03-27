@@ -8,3 +8,6 @@ Aplikasi ini adalah penyempuranaan dari aplikasi sebelumnya dengan tambahan fitu
 ### Progress 1
 Pembuatan Proposal Penawaran
 Pembuatan User Manual berbasis Video (Dalam Tahap)
+
+## Progress 2
+Integrasi sidebar ke dalam menu (navigation)

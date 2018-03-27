@@ -9,6 +9,27 @@ Verifikasi Data Registrasi Calon Pelanggan
 <small>Cek Kelayakan sebelum di-post ke Perencanaan</small>
 <hr/>
 
+<div style="overflow:auto;margin-bottom:5px;">
+<div id="form-kiri" style="border:1px solid #ccc;border-radius:5px;width:450px;padding:5px;float:left;margin-right:5px;margin-bottom:5px;">
+<div>
+	<input type="checkbox" name="chk-tgl" id="chk-tgl" />&nbsp;
+	<label for="tgl-awal">Tgl Input</label>
+	<input type="text" id="tgl-awal" name="tgl-awal" class="tanggal" readonly/> s/d
+	<input type="text" id="tgl-akhir" name="tgl-akhir" class="tanggal" readonly/>
+</div>
+<div>
+	<input type="checkbox" name="chk-upp" id="chk-upp" />&nbsp;
+	<label for="opt-status">Status</label>
+	<select id="opt-status" name="opt-status"></select>
+</div>
+<hr/>
+<div style="margin-top:20px;">
+<button id="btn-submit" name="btn-submit" class="ui-button" style="float:right;">Tampilkan</button>
+<button id="btn-reset" name="btn-reset" class="ui-button">Reset</button>
+</div>
+
+</div>
+</div>
 
 <table class="tablex" style="">
 	<thead>
@@ -133,6 +154,7 @@ $(document).ready(function(){
 		$('#opt-perun').load('ctrl/main.php?gif=perun');
 		$('#opt-airalt').load('ctrl/main.php?gif=airalt');
 		$('#opt-verifystat').load('ctrl/main.php?gif=verifystat');
+		$('#opt-status').load('ctrl/main.php?gif=verifystat');
 		$('#form')[0].reset();
 	});
 	
