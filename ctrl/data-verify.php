@@ -9,6 +9,7 @@ $con=$connection->con;
 if(isset($_GET['gif']) && $_GET['gif']!=''){
 	switch($_GET['gif']){
 		case 'tabel':
+$kelas_warna="";
 $sql="
 SELECT ID, no_ktp, nama_1, alamat_1, rt_1, rw_1, kecamatan_1, kelurahan_1, nama_2, alamat_2, rt_2, rw_2, kecamatan_2, kelurahan_2, no_spl, u.code, no_hp, pekerjaan, pos_lat, pos_lon, luas, jns_bangunan, jml_penghuni, stat_rmh, peruntukan, sumber_air, DATE_FORMAT(tgl_input,'%d-%b-%Y'), IF(status=0,'Unverified','Verified'),upp,status
 FROM pelanggan_reg
@@ -21,6 +22,8 @@ ORDER BY ID ASC
 				$i=0;
 				while($row=$rs->fetch_row()){
 				$i++;
+$kelas_warna="merah";
+if($row[29]==1)$kelas_warna="hijau";
 				echo "
 				<tr id=\"$row[0]\">
 					<td>$i</td>
@@ -55,7 +58,7 @@ verifystat=\"$row[29]\"
 					<td class=\"tengah\"><span id=\"hp-$row[0]\"><small>$row[16]</small></span></td>
 					<td class=\"kanan\"><span id=\"luas-$row[0]\"><small>$row[20] M<sup>2</sup></small></span></td>
 					<td class=\"tengah\"><span id=\"tgl-$row[0]\"><small>$row[26]</small></span></td>
-					<td><span id=\"stat-$row[0]\">$row[27]</span></td>
+					<td class=\"$kelas_warna\"><span id=\"stat-$row[0]\">$row[27]</span></td>
 				</tr>
 				";
 				}
