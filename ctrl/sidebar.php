@@ -43,6 +43,16 @@ if(isset($_GET['berkas'])){
 		</div>
 		</a>
 
+		<a href="?proses=kalkulasi" title="Kalkulasi" class="sub-side-menu">
+
+		<div class="menu-md">
+
+			<img class="icon-md" id="ic-reg" src="static/icon/calc.png"/>
+			<br/>
+			<small>Kalkulasi</small>
+		</div>
+		</a>
+
 		<a href="?proses=invoice" title="Tagihan" class="sub-side-menu">
 		<div class="menu-md">
 
